@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorfondoactivity"
+    android:orientation="vertical"
+    tools:context="com.example.administrador.superagentecomercio.superagente.AfiliacionComercio">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorFondo"
+            android:gravity="center"
+            android:text="@string/titulo_afiliacion_comercio"
+            android:textColor="@color/color_blanco"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ingrese_clave_acceso" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:background="@color/color_blanco"
+                android:id="@+id/txt_clave_acceso"
+                android:layout_width="200dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_confirme_clave_acceso" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:background="@color/color_blanco"
+                android:id="@+id/txt_confirm_clave_acceso"
+                android:layout_width="200dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ingrese_correo_electronico" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:background="@color/color_blanco"
+                android:id="@+id/txt_correo_electronico"
+                android:layout_width="300dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ingrese_celular_acceso_internet" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:background="@color/color_blanco"
+                android:id="@+id/txt_celular_acceso_internet"
+                android:layout_width="200dp"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_continuar"
+            android:background="@color/color_blanco"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorfondoactivity"
+    android:orientation="vertical"
+    tools:context="com.example.administrador.superagentecomercio.superagente.IngresoInformacionComercio">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/textViewInfoElectronica"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorFondo"
+            android:gravity="center"
+            android:text="@string/titulo_terminos_condiciones"
+            android:textColor="@color/color_blanco"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:text="@string/tv_ingrese_nombre" />
+
+                <EditText
+                    android:id="@+id/txt_nombre"
+                    android:layout_width="330dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_ingrese_apellido" />
+
+                <EditText
+                    android:id="@+id/txt_apellido"
+                    android:layout_width="330dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_ingrese_ruc_comercio" />
+
+                <EditText
+                    android:id="@+id/txt_ruc"
+                    android:layout_width="330dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_ingrese_razon_social_comercio" />
+
+                <EditText
+                    android:id="@+id/txt_raz_social"
+                    android:layout_width="330dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_ingrese_dni" />
+
+                <EditText
+                    android:id="@+id/txt_dni"
+                    android:layout_width="330dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="165dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_pais_comercio" />
+
+                        <Spinner
+                            android:id="@+id/sp_pais"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="165dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_provincia_comercio" />
+
+                        <Spinner
+                            android:id="@+id/sp_provincia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_ingrese_direccion_comercio" />
+
+                <EditText
+                    android:id="@+id/txt_direccion_comercio"
+                    android:layout_width="330dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <Button
+                    android:id="@+id/btn_salir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/color_blanco"
+                    android:text="@string/btn_continuar" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

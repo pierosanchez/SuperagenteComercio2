@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">SuperAgenteComercio</string>
+
+    <!-- botones -->
+
+    <string name="btn_salir">SALIR</string>
+    <string name="btn_continuar">CONTINUAR</string>
+    <string name="btn_aceptar">ACEPTAR</string>
+    <string name="btn_cancelar">CANCELAR</string>
+
+    <!-- pantalla de terminos y condiciones del comercio -->
+
+    <string name="titulo_terminos_condiciones">TÉRMINOS Y CONDICIONES DE USO - COMERCIO</string>
+    <string name="rbtn_acepto_terminos_condiciones">ACEPTO TÉRMINOS Y CONDICIONES</string>
+    <string name="tv_terminos">NO! utilice nuestros servicios de forma indebida. Por ejemplo, no interfiera en nustros Servicios ni intente diferente a la interfaz y las instrucciones que le proporcionamos.
+    Puede utilizar nuestros servicios solo con las leyes y regulaciones correspondientes de control de exportacion y reexportacion. Podremos suspender el servicio si usted incumple nuestras condiciones o politicas o si estamos investigando una presunta confraternidad.
+    El uso de nuestos servicios nos otrosga derechos de propiedad intelectual.</string>
+
+    <!-- pantalla de ingreso de informacion del comercio -->
+
+    <string name="titulo_ingreso_informacion_comercio">INGRESO DE INFORMACIÒN DEL COMERCIO</string>
+    <string name="tv_ingrese_nombre">INGRESE NOMBRES:</string>
+    <string name="tv_ingrese_apellido">INGRESE APELLIDOS:</string>
+    <string name="tv_ingrese_ruc_comercio">INGRESE RUC.:</string>
+    <string name="tv_ingrese_razon_social_comercio">INGRESE RAZÓN SOCIAL:</string>
+    <string name="tv_ingrese_dni">INGRESE D.N.I.:</string>
+    <string name="tv_pais_comercio">PAIS</string>
+    <string name="tv_provincia_comercio">PROVINCIA</string>
+    <string name="tv_ingrese_direccion_comercio">INGRESE DIRECCIÓN</string>
+
+    <!-- pantalla de clave de acceso del comercio -->
+
+    <string name="titulo_afiliacion_comercio">AFILIACIÓN DE COMERCIO</string>
+    <string name="tv_ingrese_clave_acceso">INGRESE SU CLAVE DE ACCESO</string>
+    <string name="tv_confirme_clave_acceso">CONFIRME SU CLAVE DE ACCESO</string>
+    <string name="tv_ingrese_correo_electronico">INGRESE SU CORREO ELECTRÓNICO</string>
+    <string name="tv_ingrese_celular_acceso_internet">INGRESE CELULAR CON ACCESO A INTERNET</string>
+
+    <!-- pantalla de ingreso de cuentas del comercio -->
+
+    <string name="titulo_ingreso_cuentas_comercio">INGRESO DE CUENTAS DEL COMERCIO</string>
+    <string name="tv_cuentas_registradas">CUENTAS REGISTRADAS</string>
+    <string name="rbtn_ahorros">AHORROS</string>
+    <string name="rbtn_cuenta_corriente">CUENTA CORRIENTE</string>
+    <string name="tv_ingrese_numero_cuenta">INGRESE NÚMERO DE CUENTA</string>
+
+    <!-- pantalla de registro de comercios -->
+
+    <string name="titulo_registro_comercios">REGISTRO DE COMERCIOS</string>
+    <string name="tv_comercios_registrados">COMERCIOS REGISTRADOS</string>
+
+</resources>
