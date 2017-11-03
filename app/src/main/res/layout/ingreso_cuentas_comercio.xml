@@ -37,19 +37,40 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_marginTop="20dp"
+                android:text="@string/tv_ingrese_numero_cuenta" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_cuentas_registradas" />
+            <EditText
+                android:id="@+id/txt_numero_cuenta"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_amarillo" />
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/tv_codigo_interbancario" />
+
+            <EditText
+                android:id="@+id/txt_codigo_interbancario"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_amarillo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/tv_tipo_cuenta" />
 
             <RadioGroup
+                android:id="@+id/rg_tipo_cuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -66,6 +87,7 @@
                     android:id="@+id/rbtn_cuenta_corriente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:text="@string/rbtn_cuenta_corriente" />
 
             </RadioGroup>
@@ -74,32 +96,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/sp_banco"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent">
 
-                <Spinner
-                    android:id="@+id/sp_moneda"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_banco" />
+
+                    <Spinner
+                        android:id="@+id/sp_banco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="62dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_moneda" />
+
+                    <Spinner
+                        android:id="@+id/sp_moneda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/tv_ingrese_numero_cuenta" />
-
-            <EditText
-                android:id="@+id/txt_numero_cuenta"
-                android:layout_width="250dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/color_amarillo" />
 
         </LinearLayout>
 
@@ -114,21 +148,21 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/btn_aceptar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/color_blanco"
-                    android:text="@string/btn_aceptar"
                     android:layout_weight="1"
-                    android:id="@+id/btn_aceptar"/>
+                    android:background="@color/color_blanco"
+                    android:text="@string/btn_aceptar" />
 
                 <Button
+                    android:id="@+id/btn_cancelar"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
-                    android:background="@color/color_blanco"
-                    android:text="@string/btn_cancelar"
                     android:layout_weight="1"
-                    android:id="@+id/btn_cancelar"/>
+                    android:background="@color/color_blanco"
+                    android:text="@string/btn_cancelar" />
 
             </TableRow>
 

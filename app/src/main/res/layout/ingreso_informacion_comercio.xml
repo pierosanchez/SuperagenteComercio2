@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
-                    android:text="@string/tv_ingrese_nombre" />
+                    android:text="@string/tv_ingrese_ruc_comercio" />
 
                 <EditText
                     android:id="@+id/txt_nombre"
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/tv_ingrese_apellido" />
+                    android:text="@string/tv_ingrese_razon_social_comercio" />
 
                 <EditText
                     android:id="@+id/txt_apellido"
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/tv_ingrese_ruc_comercio" />
+                    android:text="@string/tv_ingrese_direccion_comercio" />
 
                 <EditText
                     android:id="@+id/txt_ruc"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/tv_ingrese_razon_social_comercio" />
+                    android:text="@string/tv_representante" />
 
                 <EditText
                     android:id="@+id/txt_raz_social"
@@ -92,47 +92,55 @@
                     android:layout_height="30dp"
                     android:background="@color/color_blanco" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/tv_ingrese_dni" />
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
 
-                <EditText
-                    android:id="@+id/txt_dni"
-                    android:layout_width="330dp"
-                    android:layout_height="30dp"
-                    android:background="@color/color_blanco" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_ingrese_dni" />
+
+                    <EditText
+                        android:layout_marginLeft="35dp"
+                        android:id="@+id/txt_dni"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:background="@color/color_blanco" />
+
+                </LinearLayout>
 
                 <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center">
 
                     <LinearLayout
-                        android:layout_width="165dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content">
 
                         <TextView
-                            android:layout_width="165dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/tv_pais_comercio" />
+                            android:text="@string/tv_departamento_comercio"
+                            />
 
                         <Spinner
-                            android:id="@+id/sp_pais"
+                            android:id="@+id/sp_departamento"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"/>
 
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="165dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -142,25 +150,31 @@
                         <Spinner
                             android:id="@+id/sp_provincia"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="53dp"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_distrito" />
+
+                        <Spinner
+                            android:id="@+id/sp_distrito"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="63dp"/>
 
 
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/tv_ingrese_direccion_comercio" />
-
-                <EditText
-                    android:id="@+id/txt_direccion_comercio"
-                    android:layout_width="330dp"
-                    android:layout_height="30dp"
-                    android:background="@color/color_blanco" />
 
                 <Button
                     android:id="@+id/btn_salir"

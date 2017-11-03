@@ -21,83 +21,164 @@
             android:text="@string/titulo_afiliacion_comercio"
             android:textColor="@color/color_blanco"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_ingrese_clave_acceso" />
-
-            <EditText
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="130dp"
                 android:layout_marginTop="5dp"
-                android:background="@color/color_blanco"
-                android:id="@+id/txt_clave_acceso"
-                android:layout_width="200dp"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_confirme_clave_acceso" />
-
-            <EditText
-                android:layout_marginTop="5dp"
-                android:background="@color/color_blanco"
-                android:id="@+id/txt_confirm_clave_acceso"
-                android:layout_width="200dp"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_ingrese_correo_electronico" />
-
-            <EditText
-                android:layout_marginTop="5dp"
-                android:background="@color/color_blanco"
-                android:id="@+id/txt_correo_electronico"
-                android:layout_width="300dp"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:layout_marginTop="10dp"
+                android:background="@drawable/broder_comercio"
                 android:gravity="center"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_ingrese_celular_acceso_internet" />
+                android:orientation="vertical">
 
-            <EditText
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_ingrese_clave_acceso" />
+
+                <EditText
+                    android:id="@+id/txt_clave_acceso"
+                    android:layout_width="160dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/color_blanco" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_confirme_clave_acceso" />
+
+                <EditText
+                    android:id="@+id/txt_confirma_clave_acceso"
+                    android:layout_width="160dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/color_blanco" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="130dp"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/broder_comercio"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_pregunta" />
+
+                    <Spinner
+                        android:layout_marginLeft="40dp"
+                        android:id="@+id/sp_pregunta"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_respuesta" />
+
+                    <EditText
+                        android:layout_marginLeft="35dp"
+                        android:id="@+id/txt_respuesta"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:background="@color/color_blanco" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_confirme" />
+
+                    <EditText
+                        android:layout_marginLeft="44dp"
+                        android:id="@+id/txt_confirme"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:background="@color/color_blanco" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/broder_comercio"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_ingrese_correo_electronico" />
+
+                <EditText
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/txt_correo_electronico"
+                    android:layout_width="220dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_blanco" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_ingrese_celular_acceso_internet" />
+
+                <EditText
+                    android:id="@+id/txt_celular"
+                    android:layout_width="160dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/color_blanco" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
                 android:background="@color/color_blanco"
-                android:id="@+id/txt_celular_acceso_internet"
-                android:layout_width="200dp"
-                android:layout_height="30dp" />
+                android:text="@string/btn_continuar" />
 
         </LinearLayout>
 
-        <Button
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_continuar"
-            android:background="@color/color_blanco"/>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
