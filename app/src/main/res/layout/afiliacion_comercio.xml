@@ -49,6 +49,7 @@
                     android:text="@string/tv_ingrese_clave_acceso" />
 
                 <EditText
+                    android:singleLine="true"
                     android:id="@+id/txt_clave_acceso"
                     android:layout_width="160dp"
                     android:layout_height="30dp"
@@ -66,7 +67,8 @@
                     android:layout_width="160dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/color_blanco" />
+                    android:background="@color/color_blanco"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -88,10 +90,10 @@
                         android:text="@string/tv_pregunta" />
 
                     <Spinner
-                        android:layout_marginLeft="40dp"
                         android:id="@+id/sp_pregunta"
                         android:layout_width="160dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp" />
 
                 </LinearLayout>
 
@@ -106,11 +108,12 @@
                         android:text="@string/tv_respuesta" />
 
                     <EditText
-                        android:layout_marginLeft="35dp"
                         android:id="@+id/txt_respuesta"
                         android:layout_width="160dp"
                         android:layout_height="30dp"
-                        android:background="@color/color_blanco" />
+                        android:layout_marginLeft="35dp"
+                        android:background="@color/color_blanco"
+                        android:singleLine="true"/>
 
                 </LinearLayout>
 
@@ -125,11 +128,12 @@
                         android:text="@string/tv_confirme" />
 
                     <EditText
-                        android:layout_marginLeft="44dp"
                         android:id="@+id/txt_confirme"
                         android:layout_width="160dp"
                         android:layout_height="30dp"
-                        android:background="@color/color_blanco" />
+                        android:layout_marginLeft="44dp"
+                        android:background="@color/color_blanco"
+                        android:singleLine="true"/>
 
                 </LinearLayout>
 
@@ -149,11 +153,12 @@
                     android:text="@string/tv_ingrese_correo_electronico" />
 
                 <EditText
-                    android:layout_marginTop="5dp"
                     android:id="@+id/txt_correo_electronico"
                     android:layout_width="220dp"
                     android:layout_height="30dp"
-                    android:background="@color/color_blanco" />
+                    android:layout_marginTop="5dp"
+                    android:background="@color/color_blanco"
+                    android:singleLine="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -166,7 +171,8 @@
                     android:layout_width="160dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="5dp"
-                    android:background="@color/color_blanco" />
+                    android:background="@color/color_blanco"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 

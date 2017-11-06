@@ -32,7 +32,7 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
 
         ArrayList<Pregunta> listaMoneda = new ArrayList<>();
 
-        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListadoPregunta/?na=";
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListadoPregunta/?aa=";
 
         try {
             JSONArray jsonArray = utils.getJSONArrayfromURL(url);

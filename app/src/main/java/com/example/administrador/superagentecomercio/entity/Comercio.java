@@ -1,12 +1,17 @@
 package com.example.administrador.superagentecomercio.entity;
 
+import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Administrador on 03/11/2017.
  */
 
-public class Comercio {
+public class Comercio implements Parcelable{
     private String idComercio, ruc, razSocial, direccion, representanteLegal, dniRepresentante;
     private int departamentoComercio, provinciaComercio, distritoComercio;
+    private Context contexto;
 
     public Comercio(String idComercio, String ruc, String razSocial, String direccion, String representanteLegal, String dniRepresentante, int departamentoComercio, int provinciaComercio, int distritoComercio) {
         this.idComercio = idComercio;
@@ -20,7 +25,17 @@ public class Comercio {
         this.distritoComercio = distritoComercio;
     }
 
+    public Comercio (Context context) {
+        this.contexto = context;
+    }
+
     public Comercio() {
+    }
+
+    protected Comercio(Parcel in) {
+        String[] data= new String[1];
+        in.readStringArray(data);
+        idComercio = data[0];
     }
 
     public String getIdComercio() {
@@ -94,4 +109,26 @@ public class Comercio {
     public void setDistritoComercio(int distritoComercio) {
         this.distritoComercio = distritoComercio;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[]{this.idComercio});
+    }
+
+    public static final Parcelable.Creator<Comercio> CREATOR = new Creator<Comercio>() {
+        @Override
+        public Comercio createFromParcel(Parcel source) {
+            return new Comercio(source);
+        }
+
+        @Override
+        public Comercio[] newArray(int size) {
+            return new Comercio[size];
+        }
+    };
 }
