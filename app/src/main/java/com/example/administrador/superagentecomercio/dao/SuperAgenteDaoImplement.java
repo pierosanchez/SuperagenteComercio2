@@ -27,6 +27,76 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
         utils = new Utils();
     }
 
+
+    @Override
+    public ArrayList<Banco> ListadoBancos() {
+
+        ArrayList<Banco> listaBancos = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "/webApi_2/apigeneral/ApiGeneral/ListarBancos/?empt_y=";
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Banco bancosEntity = new Banco();
+                        bancosEntity.setCod_banco(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "cod_banco")));
+                        bancosEntity.setDesc_banco(utils.getValueStringOrNull(jsonObject, "desc_banco"));
+                        bancosEntity.setAcro_banco(utils.getValueStringOrNull(jsonObject, "acro_banco"));
+                        bancosEntity.setDesc_breve_banco(utils.getValueStringOrNull(jsonObject, "desc_breve_banco"));
+                        listaBancos.add(bancosEntity);
+                    }
+                } else {
+                    listaBancos = null;
+                }
+            } else {
+                listaBancos = null;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaBancos;
+    }
+
+    @Override
+    public ArrayList<Moneda> ListarMoneda() {
+
+        ArrayList<Moneda> listaMoneda = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListarMoneda/?blank=";
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Moneda monedaEntity = new Moneda();
+                        monedaEntity.setCod_tipo_moneda(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "cod_tipo_moneda")));
+                        monedaEntity.setSigno_moneda(utils.getValueStringOrNull(jsonObject, "signo_moneda"));
+                        monedaEntity.setTipo_moneda(utils.getValueStringOrNull(jsonObject, "tipo_moneda"));
+                        listaMoneda.add(monedaEntity);
+                    }
+                } else {
+                    listaMoneda = null;
+                }
+            } else {
+                listaMoneda = null;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaMoneda;
+    }
+
     @Override
     public ArrayList<Pregunta> ListarPreguntas() {
 
@@ -161,10 +231,10 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
 
     @Override
     public Comercio InsertarComercio(String rucComercio, String razSocialComercio, String direccionComercio, String representanteComercio, String dniRepresentante, int departamento, int provincia, int distrito) {
-        Comercio user;
+        Comercio comercio;
 
         try {
-            user = new Comercio();
+            comercio = new Comercio();
 
             String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/IngresoComercio/?rucComercio=" + URLEncoder.encode(rucComercio, "UTF-8")
                     + "&razSocialComercio=" + URLEncoder.encode(razSocialComercio, "UTF-8")
@@ -182,7 +252,6 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
             if (jsonArray != null) {
                 if (jsonArray.length() > 0) {
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    Comercio comercio = new Comercio();
                     comercio.setRuc(rucComercio);
                     comercio.setRazSocial(razSocialComercio);
                     comercio.setDireccion(direccionComercio);
@@ -193,25 +262,25 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
                     comercio.setDistritoComercio(distrito);
                     comercio.setIdComercio(utils.getValueStringOrNull(jsonObject, "codComercio"));
                 } else {
-                    user = null;
+                    comercio = null;
                 }
             } else {
-                user = null;
+                comercio = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            user = null;
+            comercio = null;
         }
 
-        return user;
+        return comercio;
     }
 
     @Override
     public Cuentas IngresarCuentasComercio(int tipoCuentaComercio, int banco, int moneda, String numCuentaComercio, String idComercio, String cciComercio) {
-        Cuentas user;
+        Cuentas cuentas;
 
         try {
-            user = new Cuentas();
+            cuentas = new Cuentas();
 
             String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/IngresoCuentasComercio/?tipoCuentaComercio=" + tipoCuentaComercio
                     + "&banco=" + banco
@@ -227,33 +296,33 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
             if (jsonArray != null) {
                 if (jsonArray.length() > 0) {
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    Cuentas comercio = new Cuentas();
-                    comercio.setTipoCuenta(tipoCuentaComercio);
-                    comercio.setBanco(banco);
-                    comercio.setMoneda(moneda);
-                    comercio.setNumCuenta(numCuentaComercio);
-                    comercio.setIdComercio(idComercio);
-                    comercio.setCci(cciComercio);
+
+                    cuentas.setTipoCuenta(tipoCuentaComercio);
+                    cuentas.setBanco(banco);
+                    cuentas.setMoneda(moneda);
+                    cuentas.setNumCuenta(numCuentaComercio);
+                    cuentas.setIdComercio(idComercio);
+                    cuentas.setCci(cciComercio);
                 } else {
-                    user = null;
+                    cuentas = null;
                 }
             } else {
-                user = null;
+                cuentas = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            user = null;
+            cuentas = null;
         }
 
-        return user;
+        return cuentas;
     }
 
     @Override
     public PasswordComercio IngresarPasswordComercio(String idComercio, String claveAcceso, String pregunta, String respuesta, String correoComercio, String celularComercio) {
-        PasswordComercio user;
+        PasswordComercio passwordComercio;
 
         try {
-            user = new PasswordComercio();
+            passwordComercio = new PasswordComercio();
 
             String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/IngresePasswordComercio/?idComercio=" + URLEncoder.encode(idComercio, "UTF-8")
                     + "&claveAcceso=" + URLEncoder.encode(claveAcceso, "UTF-8")
@@ -268,26 +337,25 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
             JSONArray jsonArray = utils.getJSONArrayfromURL(url);
             if (jsonArray != null) {
                 if (jsonArray.length() > 0) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    PasswordComercio comercio = new PasswordComercio();
-                    comercio.setIdComercio(idComercio);
-                    comercio.setClaveAcceso(claveAcceso);
-                    comercio.setPregunta(pregunta);
-                    comercio.setRespuesta(respuesta);
-                    comercio.setCorreo(correoComercio);
-                    comercio.setCelular(celularComercio);
+                    //JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    passwordComercio.setIdComercio(idComercio);
+                    passwordComercio.setClaveAcceso(claveAcceso);
+                    passwordComercio.setPregunta(pregunta);
+                    passwordComercio.setRespuesta(respuesta);
+                    passwordComercio.setCorreo(correoComercio);
+                    passwordComercio.setCelular(celularComercio);
                 } else {
-                    user = null;
+                    passwordComercio = null;
                 }
             } else {
-                user = null;
+                passwordComercio = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            user = null;
+            passwordComercio = null;
         }
 
-        return user;
+        return passwordComercio;
     }
 
 }

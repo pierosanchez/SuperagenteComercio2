@@ -16,4 +16,6 @@ public interface SuperAgenteDaoInterface {
     ArrayList<Distrito> ListarDistrito();
     ArrayList<Departamento> ListarDepartamentos();
     ArrayList<Provincia> ListarProvincias();
+    ArrayList<Banco> ListadoBancos();
+    ArrayList<Moneda> ListarMoneda();
 }

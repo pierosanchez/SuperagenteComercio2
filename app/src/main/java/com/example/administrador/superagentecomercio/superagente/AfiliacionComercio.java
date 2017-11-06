@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,6 +17,7 @@ import com.example.administrador.superagentecomercio.adapter.PreguntaAdapter;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoImplement;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoInterface;
 import com.example.administrador.superagentecomercio.entity.Comercio;
+import com.example.administrador.superagentecomercio.entity.PasswordComercio;
 import com.example.administrador.superagentecomercio.entity.Pregunta;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class AfiliacionComercio extends Activity {
     Spinner sp_pregunta;
     EditText txt_clave_acceso, txt_confirma_clave_acceso, txt_respuesta, txt_confirme, txt_correo_electronico, txt_celular;
     private Comercio comercio;
+    String pregunta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,18 @@ public class AfiliacionComercio extends Activity {
 
         ejecutarListaPreguntas();
 
+        sp_pregunta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pregunta = preguntaAdapter.getItem(position).getDescripcionPregunta();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         btn_continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,9 +82,15 @@ public class AfiliacionComercio extends Activity {
                         correo.length() != 0 && celular.length() != 0) {
                     if (clave.equals(confirm_clave)) {
                         if (respuesta.equals(confirm_respuesta)) {
+
+                            AfiliacionComercio.ValidarUComercio validarUComercio = new AfiliacionComercio.ValidarUComercio();
+                            validarUComercio.execute();
+
                             Intent intent = new Intent(AfiliacionComercio.this, IngresoCuentasComercio.class);
+                            intent.putExtra("comercio", comercio);
                             startActivity(intent);
                             finish();
+
                         } else if (!respuesta.equals(confirm_respuesta)){
                             Toast.makeText(AfiliacionComercio.this, "Las respuestas no coinciden", Toast.LENGTH_LONG).show();
                         }
@@ -91,6 +112,26 @@ public class AfiliacionComercio extends Activity {
                 }
             }
         });
+    }
+
+    private class ValidarUComercio extends AsyncTask<String, Void, PasswordComercio> {
+        String clave = txt_clave_acceso.getText().toString();
+        String respuesta = txt_respuesta.getText().toString();
+        String correo = txt_correo_electronico.getText().toString();
+        String celular = txt_celular.getText().toString();
+
+        @Override
+        protected PasswordComercio doInBackground(String... params) {
+            PasswordComercio password;
+            try {
+                SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
+                password = dao.IngresarPasswordComercio(comercio.getIdComercio(), clave, pregunta, respuesta, correo, celular);
+            } catch (Exception e) {
+                password = null;
+                //fldag_clic_ingreso = 0;;
+            }
+            return password;
+        }
     }
 
     private void ejecutarListaPreguntas() {

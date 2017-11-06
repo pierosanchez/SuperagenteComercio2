@@ -25,15 +25,11 @@ public class Comercio implements Parcelable{
         this.distritoComercio = distritoComercio;
     }
 
-    public Comercio (Context context) {
-        this.contexto = context;
-    }
-
     public Comercio() {
     }
 
     protected Comercio(Parcel in) {
-        String[] data= new String[1];
+        String[] data = new String[1];
         in.readStringArray(data);
         idComercio = data[0];
     }

@@ -51,7 +51,8 @@
                     android:id="@+id/txt_ruc"
                     android:layout_width="330dp"
                     android:layout_height="30dp"
-                    android:background="@color/color_blanco" />
+                    android:background="@color/color_blanco"
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -108,7 +109,8 @@
                         android:layout_width="200dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="35dp"
-                        android:background="@color/color_blanco" />
+                        android:background="@color/color_blanco"
+                        android:inputType="number"/>
 
                 </LinearLayout>
 
