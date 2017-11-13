@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".superagente.TerminosCondiciones">
+        <activity android:name=".superagente.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,11 @@
         <activity android:name=".superagente.IngresoInformacionComercio" />
         <activity android:name=".superagente.AfiliacionComercio" />
         <activity android:name=".superagente.IngresoCuentasComercio" />
-        <activity android:name=".superagente.RegistroComercios"></activity>
+        <activity android:name=".superagente.RegistroComercios" />
+        <activity android:name=".superagente.Login" />
+        <activity android:name=".superagente.VentanaErrores" />
+        <activity android:name=".superagente.MenuCliente" />
+        <activity android:name=".superagente.TerminosCondiciones"/>
     </application>
 
 </manifest>

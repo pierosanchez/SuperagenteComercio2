@@ -9,6 +9,14 @@
     <string name="btn_cancelar">CANCELAR</string>
     <string name="btn_terminar">TERMINAR</string>
     <string name="btn_ingresar_otra_cuenta">INGRESAR OTRA CUENTA</string>
+    <string name="btn_olvido_contrasenha">¿HA OLVIDADO SU CLAVE DE ACCESO?</string>
+    <string name="btn_regresar">REGRESAR</string>
+
+    <!-- pantalla de logeo del usuario del comercio -->
+
+    <string name="titulo_acceso_sistema">ACCESO AL SISTEMA</string>
+    <string name="tv_ingrese_num_celualr_login">INGRESE SU NUMERO DE CELULAR</string>
+    <string name="tv_ingrese_clave_acceso_login">INGRESE SU CLAVE DE ACCESO</string>
 
     <!-- pantalla de terminos y condiciones del comercio -->
 
@@ -57,5 +65,24 @@
 
     <string name="titulo_registro_comercios">REGISTRO DE COMERCIOS</string>
     <string name="tv_comercios_registrados">COMERCIOS REGISTRADOS</string>
+
+    <!-- Pantalla de Errores y mensajes -->
+
+    <string name="tv_numero_celular_no_registrado">NÚMERO DE CELULAR NO REGISTRADO</string>
+    <string name="tv_ingrese_num_celular">INGRESE SU NÚMERO DE CELULAR</string>
+    <string name="tv_duda_queja">SI TIENES ALGUNA DUDA O INCONVENIENTE PUEDES LLAMARNOS AL:</string>
+    <string name="tv_telefono_central_atencion_cliente">(511) 601-1360</string>
+    <string name="tv_email_atencion_cliente">E-Mail</string>
+    <string name="tv_correo_cliente_base_peru">correocliente@baseperu.com</string>
+
+    <!-- Pantalla de Menu del Comercio -->
+
+    <string name="titulo_menu_comercio">MENÚ DEL COMERCIO</string>
+    <string name="tv_seleccione_operacion">SELECCIONE UNA OPERACION</string>
+    <string name="btn_anulacion_menu">ANULACIÓN</string>
+    <string name="btn_consulta_voucher">CONSULTA DE VOUCHERS</string>
+    <string name="btn_reporte_movimientos">REPORTE DE MOVIMIENTOS</string>
+    <string name="btn_agentes_contactos">AGENTES Y CONTACTOS</string>
+    <string name="btn_facturacion_comercio">FACTURACIÓN DEL COMERCIO</string>
 
 </resources>

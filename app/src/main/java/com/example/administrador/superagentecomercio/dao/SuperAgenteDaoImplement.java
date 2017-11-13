@@ -27,6 +27,35 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
         utils = new Utils();
     }
 
+    @Override
+    public Comercio validarLoginComercio(String num_cel_comercio, String pass_comercio) {
+        Comercio comercio;
+
+        try {
+            comercio = new Comercio();
+
+            String url = Constante.IPORHOST + "/webApi_2/apigeneral/ApiGeneral/validarLoginComercio/?num_cel_comercio=" + URLEncoder.encode(num_cel_comercio, "UTF-8") + "&pass_comercio=" + URLEncoder.encode(pass_comercio, "UTF-8");
+
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    comercio.setIdComercio(utils.getValueStringOrNull(jsonObject, "logComercio"));
+                } else {
+                    comercio = null;
+                }
+            } else {
+                comercio = null;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            comercio = null;
+        }
+
+        return comercio;
+    }
 
     @Override
     public ArrayList<Banco> ListadoBancos() {

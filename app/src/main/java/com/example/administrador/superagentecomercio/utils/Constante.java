@@ -15,7 +15,7 @@ public class Constante {
     public static final int OPCION_LOGIN = 2;
     public static final String BDSUPERAGENTE = "BDSUPERAGENTE";
     public static final String EMAILPATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    public static final String ACTIVITYROOT = "com.example.ctorres.superagentemovil3.superagente.";
+    public static final String ACTIVITYROOT = "com.example.administrador.superagentecomercio.superagente.";
     public static final String PASSWORDPATTERN = "[a-z^A-Z^0-9]";
     public static String IDACCOUNT = null;
 }
