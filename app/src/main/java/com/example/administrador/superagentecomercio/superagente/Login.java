@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class Login extends Activity {
     private Comercio comercio;
     private TextView tv_olvido_contraseña;
     private ProgressBar circleProgressBar;
+    private LinearLayout ll_olvido_contraseña;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +40,18 @@ public class Login extends Activity {
         btn_aceptar = (Button) findViewById(R.id.btn_aceptar);
         btn_salir = (Button) findViewById(R.id.btn_salir);
 
-        tv_olvido_contraseña = (TextView) findViewById(R.id.tv_olvido_contraseña);
+        ll_olvido_contraseña = (LinearLayout) findViewById(R.id.ll_olvido_contraseña);
 
         circleProgressBar = (ProgressBar) findViewById(R.id.circleProgressBar);
+
+        ll_olvido_contraseña.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Login.this, OlvidoClaveComercio.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btn_aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +90,18 @@ public class Login extends Activity {
                     Toast.makeText(Login.this, "Ingrese su número de celular", Toast.LENGTH_LONG).show();
                     circleProgressBar.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        btn_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                startActivity(intent);
             }
         });
     }

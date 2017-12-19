@@ -19,4 +19,8 @@ public interface SuperAgenteDaoInterface {
     ArrayList<Banco> ListadoBancos();
     ArrayList<Moneda> ListarMoneda();
     Comercio validarLoginComercio(String num_cel_comercio, String pass_comercio);
+    PasswordComercio ClaveAccesoOlvidada(String id_com, String nueva_clave_comercio, String resp_preg_comercio);
+    PasswordComercio actualizarClaveAcceso(String clave, String idcom, String nueva_clave, String respuesta);
+    ArrayList<PasswordComercio> detalleClaveAcceso(String idCliente);
+    PasswordComercio validarCelularComercio(String numCel);
 }

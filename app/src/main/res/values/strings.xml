@@ -11,6 +11,9 @@
     <string name="btn_ingresar_otra_cuenta">INGRESAR OTRA CUENTA</string>
     <string name="btn_olvido_contrasenha">¿HA OLVIDADO SU CLAVE DE ACCESO?</string>
     <string name="btn_regresar">REGRESAR</string>
+    <string name="btn_validar">VALIDAR</string>
+    <string name="tv_ok">OK</string>
+    <string name="tv_rayitas">==========================================</string>
 
     <!-- pantalla de logeo del usuario del comercio -->
 
@@ -84,5 +87,32 @@
     <string name="btn_reporte_movimientos">REPORTE DE MOVIMIENTOS</string>
     <string name="btn_agentes_contactos">AGENTES Y CONTACTOS</string>
     <string name="btn_facturacion_comercio">FACTURACIÓN DEL COMERCIO</string>
+    <string name="btn_cambio_clave">CAMBIO DE CLAVE</string>
+
+    <!-- Pantalla de olvido de contraseña del comercio-->
+
+    <string name="titulo_recuperacion_clave">RECUPERACIÓN DE CLAVE</string>
+    <string name="tv_ingrese_numero_celular">INGRESE SU NÚMERO DE CELULAR</string>
+    <string name="tv_pregunta_autenticacion">PREGUNTA DE AUTENTICACIÓN</string>
+    <string name="tv_ingrese_respuesta">INGRESE SU RESPUESTA</string>
+    <string name="tv_ingrese_nueva_clave">INGRESE SU NUEVA CLAVE</string>
+    <string name="tv_pregunta_secreta_olvidada">¿HA OLVIDADO SU PREGUNTA SECRETA?</string>
+
+    <!-- Pantalla de cambio de clave exitosa -->
+
+    <string name="titulo_cambio_clave_acceso_exitosa">CAMBIO DE CLAVE DE ACCESO EXITOSA</string>
+    <string name="tv_confirmacion_operacion_cambio_clave">CONFIRMACIÓN DE OPERACIÓN DE CAMBIO DE CLAVE</string>
+    <string name="tv_operacion_exitosa">OPERACIÓN EXITOSA</string>
+    <string name="tv_clave_cambiada_exito">SU CLAVE HA SIDO CAMBIADA CON ÉXITO</string>
+
+    <!-- Pantalla de calbio de clave de acceso -->
+
+    <string name="titulo_cambio_clave_acceso">CAMBIO DE CLAVE DE ACCESO</string>
+    <string name="tv_ingrese_clave_acceso_actual">INGRESE SU CLAVE DE ACCESO ACTUAL</string>
+    <string name="tv_primera_pregunta">PREGUNTA SECRETA</string>
+    <string name="tv_responda_pregunta">RESPONDA PREGUNTA</string>
+    <string name="tv_ingrese_nueva_clave_acceso">INGRESE NUEVA CLAVE DE ACCESO</string>
+    <string name="tv_confirme_nueva_clave_acceso">CONFIRME NUEVA CLAVE DE ACCESO</string>
+
 
 </resources>

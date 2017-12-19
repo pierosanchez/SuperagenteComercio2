@@ -61,32 +61,33 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_anulacion_menu"
-                    android:background="@color/color_blanco"/>
+                    android:text="@string/btn_anulacion_menu" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_consulta_voucher"
-                    android:background="@color/color_blanco"/>
+                    android:text="@string/btn_consulta_voucher" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_reporte_movimientos"
-                    android:background="@color/color_blanco"/>
+                    android:text="@string/btn_reporte_movimientos" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_agentes_contactos"
-                    android:background="@color/color_blanco"/>
+                    android:text="@string/btn_agentes_contactos" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_facturacion_comercio"
-                    android:background="@color/color_blanco"/>
+                    android:text="@string/btn_facturacion_comercio" />
+
+                <Button
+                    android:id="@+id/btn_cambio_clave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_cambio_clave" />
 
             </LinearLayout>
 
@@ -96,6 +97,7 @@
                 android:layout_marginTop="50dp">
 
                 <Button
+                    android:id="@+id/btn_salir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_salir"

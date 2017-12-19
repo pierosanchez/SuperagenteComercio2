@@ -28,6 +28,124 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
+    public PasswordComercio actualizarClaveAcceso(String clave_comercio, String id_Comercio, String clave_nueva_comercio, String respuesta_pregunta_comercio) {
+        PasswordComercio user;
+        try {
+            user = new PasswordComercio();
+
+            String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ActualizarClaveComercio/?clave_comercio=" + clave_comercio + "&id_Comercio=" + id_Comercio + "&clave_nueva_comercio=" + clave_nueva_comercio + "&respuesta_pregunta_comercio=" + respuesta_pregunta_comercio;
+
+            JSONArray arrayJason = utils.getJSONArrayfromURL(url);
+            Log.e("Json", arrayJason.toString());
+            if (arrayJason != null) {
+                if (arrayJason.length() > 0) {
+                    JSONObject jsonObject = arrayJason.getJSONObject(0);
+                    user.setReptaCambioCalve(utils.getValueStringOrNull(jsonObject, "rpta_cambio_clave"));
+                } else {
+                    user = null;
+                }
+            } else {
+                user = null;
+            }
+
+        } catch (Exception e) {
+            Log.getStackTraceString(e);
+            user = null;
+        }
+
+        return user;
+    }
+
+    @Override
+    public PasswordComercio validarCelularComercio(String numCel) {
+        PasswordComercio user;
+        try {
+            user = new PasswordComercio();
+
+            String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ValidarCelularComercio/?numcelcom=" + numCel;
+
+            JSONArray arrayJason = utils.getJSONArrayfromURL(url);
+            Log.e("Json", arrayJason.toString());
+            if (arrayJason != null) {
+                if (arrayJason.length() > 0) {
+                    JSONObject jsonObject = arrayJason.getJSONObject(0);
+                    user.setValidCelUsu(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "val")));
+                    user.setIdComercio(utils.getValueStringOrNull(jsonObject, "id"));
+
+                } else {
+                    user = null;
+                }
+            } else {
+                user = null;
+            }
+
+        } catch (Exception e) {
+            Log.getStackTraceString(e);
+            user = null;
+        }
+
+        return user;
+    }
+
+    @Override
+    public ArrayList<PasswordComercio> detalleClaveAcceso(String id_com) {
+        ArrayList<PasswordComercio> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/DetalleClaveComercio/?id_comer=" + id_com;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        PasswordComercio usuarioEntity = new PasswordComercio();
+                        usuarioEntity.setPregunta(utils.getValueStringOrNull(jsonObject, "pregunta_comercio"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
+    public PasswordComercio ClaveAccesoOlvidada(String id_com, String nueva_clave_comercio, String resp_preg_comercio) {
+        PasswordComercio user;
+        try {
+            user = new PasswordComercio();
+
+            String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/CambioClaveComercio/?id_com=" + id_com + "&nueva_clave_comercio=" + nueva_clave_comercio + "&resp_preg_comercio=" + resp_preg_comercio;
+
+            JSONArray arrayJason = utils.getJSONArrayfromURL(url);
+            Log.e("Json", arrayJason.toString());
+            if (arrayJason != null) {
+                if (arrayJason.length() > 0) {
+                    JSONObject jsonObject = arrayJason.getJSONObject(0);
+                    user.setReptaCambioCalve(utils.getValueStringOrNull(jsonObject, "rpta_cambio_clave"));
+                } else {
+                    user = null;
+                }
+            } else {
+                user = null;
+            }
+
+        } catch (Exception e) {
+            Log.getStackTraceString(e);
+            user = null;
+        }
+
+        return user;
+    }
+
+    @Override
     public Comercio validarLoginComercio(String num_cel_comercio, String pass_comercio) {
         Comercio comercio;
 

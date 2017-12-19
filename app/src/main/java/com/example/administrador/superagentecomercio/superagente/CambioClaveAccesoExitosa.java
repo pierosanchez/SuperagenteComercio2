@@ -5,28 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 
 import com.example.administrador.superagentecomercio.R;
+import com.example.administrador.superagentecomercio.entity.PasswordComercio;
 
-public class TerminosCondiciones extends Activity {
+public class CambioClaveAccesoExitosa extends Activity {
 
-    RadioButton radioTerminosCondiciones;
-    Button btn_salir;
+    private PasswordComercio usuario;
+    Button btn_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.terminos_condiciones);
+        setContentView(R.layout.cambio_clave_acceso_exitosa);
 
-        radioTerminosCondiciones = (RadioButton) findViewById(R.id.radioTerminosCondiciones);
+        btn_ok = (Button) findViewById(R.id.btn_ok);
 
-        btn_salir = (Button) findViewById(R.id.btn_salir);
-
-        radioTerminosCondiciones.setOnClickListener(new View.OnClickListener() {
+        btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TerminosCondiciones.this, IngresoInformacionComercio.class);
+                Intent intent = new Intent(CambioClaveAccesoExitosa.this, Login.class);
                 startActivity(intent);
                 finish();
             }

@@ -28,7 +28,10 @@
         <activity android:name=".superagente.Login" />
         <activity android:name=".superagente.VentanaErrores" />
         <activity android:name=".superagente.MenuCliente" />
-        <activity android:name=".superagente.TerminosCondiciones"/>
+        <activity android:name=".superagente.TerminosCondiciones" />
+        <activity android:name=".superagente.OlvidoClaveComercio" />
+        <activity android:name=".superagente.CambioClaveAccesoExitosa" />
+        <activity android:name=".superagente.CambioClaveAcceso"></activity>
     </application>
 
 </manifest>

@@ -124,7 +124,9 @@ public class IngresoCuentasComercio extends Activity {
                         IngresoCuentasComercio.IngresarCuentaComercio ingresarCuentaComercio = new IngresoCuentasComercio.IngresarCuentaComercio();
                         ingresarCuentaComercio.execute();
 
-                        Toast.makeText(IngresoCuentasComercio.this, "Flujo terminado", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(IngresoCuentasComercio.this, Login.class);
+                        startActivity(intent);
+                        finish();
                     }
                 } else if (cuenta.length() == 0){
                     Toast.makeText(IngresoCuentasComercio.this, "Ingrese su número de cuenta", Toast.LENGTH_LONG).show();
