@@ -28,6 +28,36 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
+    public ArrayList<VoucherPagoConsumo> ListadoAnulacionesComercio(String id_com) {
+        ArrayList<VoucherPagoConsumo> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListadoAnulacionesComercio/?comPK=" + id_com;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        VoucherPagoConsumo usuarioEntity = new VoucherPagoConsumo();
+                        usuarioEntity.setNumeroUnico(utils.getValueStringOrNull(jsonObject, "numero_unico"));
+                        usuarioEntity.setNomCliente(utils.getValueStringOrNull(jsonObject, "nombre"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
     public PasswordComercio actualizarClaveAcceso(String clave_comercio, String id_Comercio, String clave_nueva_comercio, String respuesta_pregunta_comercio) {
         PasswordComercio user;
         try {
