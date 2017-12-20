@@ -28,6 +28,44 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
+    public ArrayList<VoucherPagoConsumo> detalleComercio(String numUnico) {
+        ArrayList<VoucherPagoConsumo> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/DetalleConsumo/?numUNICO=" + numUnico;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        VoucherPagoConsumo usuarioEntity = new VoucherPagoConsumo();
+                        usuarioEntity.setNumeroUnico(utils.getValueStringOrNull(jsonObject, "numero_unico"));
+                        usuarioEntity.setDireccionComercio(utils.getValueStringOrNull(jsonObject, "direccion_comercio"));
+                        usuarioEntity.setDistritoComercio(utils.getValueStringOrNull(jsonObject, "distrito_comercio"));
+                        usuarioEntity.setFecha(utils.getValueStringOrNull(jsonObject, "fecha"));
+                        usuarioEntity.setHora(utils.getValueStringOrNull(jsonObject, "hora"));
+                        usuarioEntity.setImporte(utils.getValueStringOrNull(jsonObject, "importe"));
+                        usuarioEntity.setMarcaTarjeta(utils.getValueStringOrNull(jsonObject, "marca_tarjeta"));
+                        usuarioEntity.setNombreComercio(utils.getValueStringOrNull(jsonObject, "nombre_comercio"));
+                        usuarioEntity.setNroTarjeta(utils.getValueStringOrNull(jsonObject, "nro_tarjeta"));
+                        usuarioEntity.setBancoTarjeta(utils.getValueStringOrNull(jsonObject, "banco_tarjeta"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
     public ArrayList<VoucherPagoConsumo> ListadoAnulacionesComercio(String id_com) {
         ArrayList<VoucherPagoConsumo> listaUsuario = new ArrayList<>();
 

@@ -14,6 +14,7 @@ import com.example.administrador.superagentecomercio.R;
 import com.example.administrador.superagentecomercio.adapter.DetalleClaveAccesoAdapter;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoImplement;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoInterface;
+import com.example.administrador.superagentecomercio.entity.Comercio;
 import com.example.administrador.superagentecomercio.entity.PasswordComercio;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class CambioClaveAcceso extends Activity {
     DetalleClaveAccesoAdapter detalleClaveAccesoAdapter;
     ArrayList<PasswordComercio> usuarioEntityArrayList;
     String cliente, cli_dni, id_comercio;
+    private Comercio comercio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class CambioClaveAcceso extends Activity {
         txt_confirme_nueva_clave_acceso = (EditText) findViewById(R.id.txt_confirme_nueva_clave_acceso);
 
         Bundle bundle = getIntent().getExtras();
-        id_comercio = bundle.getString("id_comercio");
+        comercio = bundle.getParcelable("comercio");
 
         usuarioEntityArrayList = null;
         detalleClaveAccesoAdapter = new DetalleClaveAccesoAdapter(usuarioEntityArrayList, getApplication());
@@ -70,7 +72,7 @@ public class CambioClaveAcceso extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CambioClaveAcceso.this, MenuCliente.class);
-                intent.putExtra("id_comercio", id_comercio);
+                intent.putExtra("comercio", comercio);
                 startActivity(intent);
                 finish();
             }
@@ -87,7 +89,7 @@ public class CambioClaveAcceso extends Activity {
             PasswordComercio user;
             try {
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                user = dao.actualizarClaveAcceso(clave, id_comercio,  nueva_clave, respuesta);
+                user = dao.actualizarClaveAcceso(clave, comercio.getIdComercio(),  nueva_clave, respuesta);
                 //Log.e("idCliente", "CodCliente=" + user.getCodCliente() + ", usuarioId=" + usuario.getUsuarioId());
                 //usuario.setClaveAcceso(user.getClaveAcceso());
             } catch (Exception e) {
@@ -109,7 +111,7 @@ public class CambioClaveAcceso extends Activity {
                     Toast.makeText(CambioClaveAcceso.this, "La contraseña ingresada, ya existe para este usuario", Toast.LENGTH_SHORT).show();
                 } else if (usuario.getReptaCambioCalve().equals("0")) {
                     Intent intent = new Intent(CambioClaveAcceso.this, CambioClaveAccesoExitosa.class);
-                    intent.putExtra("id_comercio", id_comercio);
+                    intent.putExtra("comercio", comercio);
                     startActivity(intent);
                     finish();
                 }
@@ -138,7 +140,7 @@ public class CambioClaveAcceso extends Activity {
 
             try {
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                usuarioEntityArrayList = dao.detalleClaveAcceso(id_comercio);
+                usuarioEntityArrayList = dao.detalleClaveAcceso(comercio.getIdComercio());
             } catch (Exception e) {
                 //fldag_clic_ingreso = 0;;
             }

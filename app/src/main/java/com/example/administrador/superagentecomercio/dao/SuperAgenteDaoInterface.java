@@ -24,4 +24,5 @@ public interface SuperAgenteDaoInterface {
     ArrayList<PasswordComercio> detalleClaveAcceso(String idCliente);
     PasswordComercio validarCelularComercio(String numCel);
     ArrayList<VoucherPagoConsumo> ListadoAnulacionesComercio(String id_com);
+    ArrayList<VoucherPagoConsumo> detalleComercio(String numUnico);
 }

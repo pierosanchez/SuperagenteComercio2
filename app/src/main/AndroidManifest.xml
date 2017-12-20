@@ -31,7 +31,9 @@
         <activity android:name=".superagente.TerminosCondiciones" />
         <activity android:name=".superagente.OlvidoClaveComercio" />
         <activity android:name=".superagente.CambioClaveAccesoExitosa" />
-        <activity android:name=".superagente.CambioClaveAcceso"></activity>
+        <activity android:name=".superagente.CambioClaveAcceso" />
+        <activity android:name=".superagente.ListadoAnulacionesComercio" />
+        <activity android:name=".superagente.DetalleConsumo"></activity>
     </application>
 
 </manifest>

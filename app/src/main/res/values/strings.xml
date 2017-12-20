@@ -12,6 +12,7 @@
     <string name="btn_olvido_contrasenha">¿HA OLVIDADO SU CLAVE DE ACCESO?</string>
     <string name="btn_regresar">REGRESAR</string>
     <string name="btn_validar">VALIDAR</string>
+    <string name="btn_anular_operacion">ANULAR OPERACION</string>
     <string name="tv_ok">OK</string>
     <string name="tv_rayitas">==========================================</string>
 
@@ -114,5 +115,20 @@
     <string name="tv_ingrese_nueva_clave_acceso">INGRESE NUEVA CLAVE DE ACCESO</string>
     <string name="tv_confirme_nueva_clave_acceso">CONFIRME NUEVA CLAVE DE ACCESO</string>
 
+    <!-- Pantalla de listado de voucher de anulaciones -->
+
+    <string name="titulo_listado_voucher_anulaciones">LISTADO DE VOUCHER DE ANULACIONES</string>
+
+    <!-- Pantalla de Detalle del consumo -->
+
+    <string name="titulo_detalle_consumo">DETALLE DEL CONSUMO</string>
+    <string name="tv_superagente_voucher">*** SÚPER AGENTE ***</string>
+    <string name="tv_numero_unico_voucher">NÚMERO ÚNICO:</string>
+    <string name="tv_fecha_voucher_consumo">FECHA:</string>
+    <string name="tv_hora_voucher_consumo">HORA:</string>
+    <string name="tv_nro_unico_voucher_consumo">NRO. ÚNICO:</string>
+    <string name="tv_importe_voucher_consumo">IMPORTE:</string>
+    <string name="tv_banco_voucher_consumo">BANCO:</string>
+    <string name="tv_datos_comercio_consumo">DATOS DEL COMERCIO</string>
 
 </resources>
