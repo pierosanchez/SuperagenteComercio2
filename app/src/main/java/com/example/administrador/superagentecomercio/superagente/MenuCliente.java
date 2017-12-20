@@ -11,7 +11,7 @@ import com.example.administrador.superagentecomercio.entity.Comercio;
 
 public class MenuCliente extends Activity {
 
-    Button btn_salir, btn_cambio_clave,btn_anulacion;
+    Button btn_salir, btn_cambio_clave, btn_mantenimiento;
     private Comercio comercio;
 
     @Override
@@ -21,7 +21,7 @@ public class MenuCliente extends Activity {
 
         btn_salir = (Button) findViewById(R.id.btn_salir);
         btn_cambio_clave = (Button) findViewById(R.id.btn_cambio_clave);
-        btn_anulacion = (Button) findViewById(R.id.btn_anulacion);
+        btn_mantenimiento = (Button) findViewById(R.id.btn_mantenimiento_menu);
 
         Bundle extra = getIntent().getExtras();
         comercio = extra.getParcelable("comercio");
@@ -31,7 +31,16 @@ public class MenuCliente extends Activity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MenuCliente.this, CambioClaveAcceso.class);
-                intent.putExtra("comercio", comercio);
+                intent.putExtra("id_comercio", comercio.getIdComercio());
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_mantenimiento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuCliente.this, ListarOperario.class);
                 startActivity(intent);
                 finish();
             }
@@ -46,16 +55,6 @@ public class MenuCliente extends Activity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 startActivity(intent);
-            }
-        });
-
-        btn_anulacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuCliente.this, ListadoAnulacionesComercio.class);
-                intent.putExtra("comercio", comercio);
-                startActivity(intent);
-                finish();
             }
         });
     }
