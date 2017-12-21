@@ -117,7 +117,6 @@
     <string name="tv_confirme_nueva_clave_acceso">CONFIRME NUEVA CLAVE DE ACCESO</string>
     <string name="title_activity_listar_operario">ListarOperario</string>
 
-<<<<<<< Updated upstream
     <!-- Pantalla de listado de voucher de anulaciones -->
 
     <string name="titulo_listado_voucher_anulaciones">LISTADO DE VOUCHER DE ANULACIONES</string>
@@ -133,10 +132,8 @@
     <string name="tv_importe_voucher_consumo">IMPORTE:</string>
     <string name="tv_banco_voucher_consumo">BANCO:</string>
     <string name="tv_datos_comercio_consumo">DATOS DEL COMERCIO</string>
-=======
     <!-- Pantalla de Lista de Operarios -->
     <string name="titulo_lista_operario">LISTADO DE OPERARIOS</string>
     <string name="title_activity_agregar_operario">AgregarOperario</string>
->>>>>>> Stashed changes
 
 </resources>

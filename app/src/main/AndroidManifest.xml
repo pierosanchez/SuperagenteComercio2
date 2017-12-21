@@ -32,15 +32,14 @@
         <activity android:name=".superagente.OlvidoClaveComercio" />
         <activity android:name=".superagente.CambioClaveAccesoExitosa" />
         <activity android:name=".superagente.CambioClaveAcceso" />
-<<<<<<< Updated upstream
         <activity android:name=".superagente.ListadoAnulacionesComercio" />
-        <activity android:name=".superagente.DetalleConsumo"></activity>
-=======
+        <activity android:name=".superagente.DetalleConsumo" />
         <activity android:name=".superagente.ListarOperario" />
         <activity
             android:name=".superagente.AgregarOperario"
-            android:label="@string/title_activity_agregar_operario"></activity>
->>>>>>> Stashed changes
+            android:label="@string/title_activity_agregar_operario" />
+        <activity android:name=".superagente.EditarOperario" />
+        <activity android:name=".superagente.DetalleOperario"></activity>
     </application>
 
 </manifest>

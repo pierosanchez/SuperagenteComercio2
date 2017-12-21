@@ -8,39 +8,35 @@ import android.view.View;
 import com.example.administrador.superagentecomercio.R;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
-public class ListarOperario extends Activity {
+public class DetalleOperario extends Activity {
 
-    FloatingActionButton btn_menu,btn_agregar;
+    FloatingActionButton btn_editar,btn_eliminar,btn_regresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listar_operario);
+        setContentView(R.layout.detalle_operario);
 
-        btn_menu = (FloatingActionButton) findViewById(R.id.action_menu);
-        btn_agregar = (FloatingActionButton) findViewById(R.id.action_agregar);
+        btn_editar = (FloatingActionButton) findViewById(R.id.action_editar);
+        btn_eliminar = (FloatingActionButton) findViewById(R.id.action_agregar);
+        btn_regresar = (FloatingActionButton) findViewById(R.id.action_return);
 
-        btn_menu.setOnClickListener(new View.OnClickListener() {
+        btn_editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListarOperario.this, DetalleOperario.class);
+                Intent intent = new Intent(DetalleOperario.this, EditarOperario.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        btn_agregar.setOnClickListener(new View.OnClickListener() {
+        btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListarOperario.this, AgregarOperario.class);
+                Intent intent = new Intent(DetalleOperario.this, ListarOperario.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
     }
-
-
-
 }
