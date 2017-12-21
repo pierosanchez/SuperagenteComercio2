@@ -38,8 +38,12 @@
         <activity
             android:name=".superagente.AgregarOperario"
             android:label="@string/title_activity_agregar_operario" />
+<<<<<<< Updated upstream
         <activity android:name=".superagente.EditarOperario" />
         <activity android:name=".superagente.DetalleOperario"></activity>
+=======
+        <activity android:name=".superagente.ReporteMovimientos"></activity>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

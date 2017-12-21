@@ -11,7 +11,7 @@ import com.example.administrador.superagentecomercio.entity.Comercio;
 
 public class MenuCliente extends Activity {
 
-    Button btn_salir, btn_cambio_clave, btn_mantenimiento;
+    Button btn_salir, btn_cambio_clave, btn_mantenimiento, btn_anulacion, btn_reporte_movimientos;
     private Comercio comercio;
 
     @Override
@@ -22,6 +22,8 @@ public class MenuCliente extends Activity {
         btn_salir = (Button) findViewById(R.id.btn_salir);
         btn_cambio_clave = (Button) findViewById(R.id.btn_cambio_clave);
         btn_mantenimiento = (Button) findViewById(R.id.btn_mantenimiento_menu);
+        btn_anulacion = (Button) findViewById(R.id.btn_anulacion);
+        btn_reporte_movimientos = (Button) findViewById(R.id.btn_reporte_movimientos);
 
         Bundle extra = getIntent().getExtras();
         comercio = extra.getParcelable("comercio");
@@ -31,7 +33,17 @@ public class MenuCliente extends Activity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MenuCliente.this, CambioClaveAcceso.class);
-                intent.putExtra("id_comercio", comercio.getIdComercio());
+                intent.putExtra("comercio", comercio);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_anulacion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MenuCliente.this, ListadoAnulacionesComercio.class);
+                intent.putExtra("comercio", comercio);
                 startActivity(intent);
                 finish();
             }
@@ -41,6 +53,16 @@ public class MenuCliente extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuCliente.this, ListarOperario.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_reporte_movimientos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuCliente.this, ReporteMovimientos.class);
+                intent.putExtra("comercio", comercio);
                 startActivity(intent);
                 finish();
             }

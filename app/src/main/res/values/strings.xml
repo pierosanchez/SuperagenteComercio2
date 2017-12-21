@@ -132,8 +132,20 @@
     <string name="tv_importe_voucher_consumo">IMPORTE:</string>
     <string name="tv_banco_voucher_consumo">BANCO:</string>
     <string name="tv_datos_comercio_consumo">DATOS DEL COMERCIO</string>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <!-- Pantalla de Lista de Operarios -->
+
     <string name="titulo_lista_operario">LISTADO DE OPERARIOS</string>
     <string name="title_activity_agregar_operario">AgregarOperario</string>
+<<<<<<< Updated upstream
+=======
+
+    <!-- Pantalla de Reporte de movimientos -->
+
+    <string name="titulo_reporte_movimientos">REPORTE DE MOVIMIENTOS</string>
+>>>>>>> Stashed changes
 
 </resources>

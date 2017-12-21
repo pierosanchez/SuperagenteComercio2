@@ -28,6 +28,38 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
+    public ArrayList<VoucherPagoConsumo> reporteMovimientos(String idComercio) {
+        ArrayList<VoucherPagoConsumo> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ReporteMovimientosComercio/?comRMC=" + idComercio;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        VoucherPagoConsumo usuarioEntity = new VoucherPagoConsumo();
+                        usuarioEntity.setNumeroUnico(utils.getValueStringOrNull(jsonObject, "numero_unico"));
+                        usuarioEntity.setFecha(utils.getValueStringOrNull(jsonObject, "fecha"));
+                        usuarioEntity.setHora(utils.getValueStringOrNull(jsonObject, "hora"));
+                        usuarioEntity.setImporte(utils.getValueStringOrNull(jsonObject, "importe"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
     public ArrayList<VoucherPagoConsumo> detalleComercio(String numUnico) {
         ArrayList<VoucherPagoConsumo> listaUsuario = new ArrayList<>();
 

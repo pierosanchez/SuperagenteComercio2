@@ -65,21 +65,25 @@
                     android:text="@string/btn_anulacion_menu" />
 
                 <Button
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_consulta_voucher" />
 
                 <Button
+                    android:id="@+id/btn_reporte_movimientos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_reporte_movimientos" />
 
                 <Button
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_agentes_contactos" />
 
                 <Button
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_facturacion_comercio" />
@@ -90,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/btn_cambio_clave" />
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/btn_mantenimiento_menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
