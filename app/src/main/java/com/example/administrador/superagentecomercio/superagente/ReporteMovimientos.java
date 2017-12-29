@@ -1,8 +1,11 @@
 package com.example.administrador.superagentecomercio.superagente;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -23,6 +26,7 @@ public class ReporteMovimientos extends Activity {
     ArrayList<VoucherPagoConsumo> voucherPagoConsumoArrayList;
     ReporteMovimientoAdapter reporteMovimientoAdapter;
     private Comercio comercio;
+    String nroUnico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,27 @@ public class ReporteMovimientos extends Activity {
 
         ejecutarLista();
 
+        lv_reporte_movimientos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                nroUnico = reporteMovimientoAdapter.getItem(position).getNumeroUnico();
+                Intent intent = new Intent(ReporteMovimientos.this, VoucherConsumos.class);
+                intent.putExtra("numUnico", nroUnico);
+                intent.putExtra("comercio", comercio);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReporteMovimientos.this, MenuCliente.class);
+                intent.putExtra("comercio", comercio);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

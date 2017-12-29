@@ -104,9 +104,9 @@ public class CambioClaveAcceso extends Activity {
             usuario = usuarioEntity;
             if (usuario.getReptaCambioCalve() != null) {
                 if (usuario.getReptaCambioCalve().equals("1")) {
-                    Toast.makeText(CambioClaveAcceso.this, "La Contraseña ingresada, no es correcta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CambioClaveAcceso.this, "La contraseña ingresada es incorrecta", Toast.LENGTH_SHORT).show();
                 } else if (usuario.getReptaCambioCalve().equals("2")) {
-                    Toast.makeText(CambioClaveAcceso.this, "La respuesta ingresada, no es correcta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CambioClaveAcceso.this, "Pregunta secreta incorrecta", Toast.LENGTH_SHORT).show();
                 } else if (usuario.getReptaCambioCalve().equals("3")) {
                     Toast.makeText(CambioClaveAcceso.this, "La contraseña ingresada, ya existe para este usuario", Toast.LENGTH_SHORT).show();
                 } else if (usuario.getReptaCambioCalve().equals("0")) {
