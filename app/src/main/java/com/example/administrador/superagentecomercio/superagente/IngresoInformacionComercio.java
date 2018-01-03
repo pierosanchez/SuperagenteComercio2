@@ -15,14 +15,18 @@ import android.widget.Toast;
 
 import com.example.administrador.superagentecomercio.R;
 import com.example.administrador.superagentecomercio.adapter.DepartamentosAdapter;
+import com.example.administrador.superagentecomercio.adapter.DepartamentosUbigeoAdapter;
 import com.example.administrador.superagentecomercio.adapter.DistritoAdapter;
+import com.example.administrador.superagentecomercio.adapter.DistritoUbigeoAdapter;
 import com.example.administrador.superagentecomercio.adapter.ProvinciaAdapter;
+import com.example.administrador.superagentecomercio.adapter.ProvinciaUbigeoAdapter;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoImplement;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoInterface;
 import com.example.administrador.superagentecomercio.entity.Comercio;
 import com.example.administrador.superagentecomercio.entity.Departamento;
 import com.example.administrador.superagentecomercio.entity.Distrito;
 import com.example.administrador.superagentecomercio.entity.Provincia;
+import com.example.administrador.superagentecomercio.entity.Ubigeo;
 
 import java.util.ArrayList;
 
@@ -31,12 +35,13 @@ public class IngresoInformacionComercio extends Activity {
     Button btn_continuar;
     EditText txt_ruc, txt_raz_social, txt_direccion, txt_rep_legal, txt_dni;
     Spinner sp_departamento, sp_provincia, sp_distrito;
-    ArrayList<Departamento> departamentoArrayList;
-    ArrayList<Provincia> provinciaArrayList;
-    ArrayList<Distrito> distritoArrayList;
-    DepartamentosAdapter departamentosAdapter;
-    ProvinciaAdapter provinciasAdapter;
-    DistritoAdapter distritosAdapter;
+    ArrayList<Ubigeo> ubigeoArrayListDepartamento;
+    ArrayList<Ubigeo> ubigeoArrayListDistrito;
+    ArrayList<Ubigeo> ubigeoArrayListProvincia;
+    DepartamentosUbigeoAdapter departamentosUbigeoAdapter;
+    DistritoUbigeoAdapter distritoUbigeoAdapter;
+    ProvinciaUbigeoAdapter provinciaUbigeoAdapter;
+    String departamentoUbigeo, departamentoUbigeoDesc, distritoUbigeo, distritoUbigeoDesc, provinciaUbigeo, provinciaUbigeoDesc;
     int distrito, provincia, departamento;
     private Comercio comercio;
 
@@ -58,23 +63,14 @@ public class IngresoInformacionComercio extends Activity {
         sp_provincia = (Spinner) findViewById(R.id.sp_provincia);
         sp_distrito = (Spinner) findViewById(R.id.sp_distrito);
 
-        provinciaArrayList = null;
-        provinciasAdapter = new ProvinciaAdapter(provinciaArrayList, getApplication());
-        sp_provincia.setAdapter(provinciasAdapter);
-
-        ejecutarListaProvincias();
-
-        departamentoArrayList = null;
-        departamentosAdapter = new DepartamentosAdapter(departamentoArrayList, getApplication());
-        sp_departamento.setAdapter(departamentosAdapter);
+        ubigeoArrayListDepartamento = null;
+        departamentosUbigeoAdapter = new DepartamentosUbigeoAdapter(ubigeoArrayListDepartamento, getApplication());
+        sp_departamento.setAdapter(departamentosUbigeoAdapter);
 
         ejecutarListaDepartamentos();
 
-        distritoArrayList = null;
-        distritosAdapter = new DistritoAdapter(distritoArrayList, getApplication());
-        sp_distrito.setAdapter(distritosAdapter);
-
-        ejecutarListaDistritos();
+        sp_provincia.setEnabled(false);
+        sp_distrito.setEnabled(false);
 
         btn_continuar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +105,16 @@ public class IngresoInformacionComercio extends Activity {
         sp_departamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                departamento = departamentosAdapter.getItem(position).getIdDepartamento();
+                departamentoUbigeo = departamentosUbigeoAdapter.getItem(position).getUbigeo1();
+                departamentoUbigeoDesc = departamentosUbigeoAdapter.getItem(position).getDepartamento();
+
+                ubigeoArrayListProvincia = null;
+                provinciaUbigeoAdapter = new ProvinciaUbigeoAdapter(ubigeoArrayListProvincia, getApplication());
+                sp_provincia.setAdapter(provinciaUbigeoAdapter);
+
+                ejecutarListaProvincias();
+
+                sp_provincia.setEnabled(true);
             }
 
             @Override
@@ -121,7 +126,16 @@ public class IngresoInformacionComercio extends Activity {
         sp_provincia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                provincia = provinciasAdapter.getItem(position).getIdProvincia();
+                provinciaUbigeo = provinciaUbigeoAdapter.getItem(position).getUbigeo2();
+                provinciaUbigeoDesc = provinciaUbigeoAdapter.getItem(position).getProvincia();
+
+                ubigeoArrayListDistrito = null;
+                distritoUbigeoAdapter = new DistritoUbigeoAdapter(ubigeoArrayListDistrito, getApplication());
+                sp_distrito.setAdapter(distritoUbigeoAdapter);
+
+                ejecutarListaDistritos();
+
+                sp_distrito.setEnabled(true);
             }
 
             @Override
@@ -133,7 +147,8 @@ public class IngresoInformacionComercio extends Activity {
         sp_distrito.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                distrito = distritosAdapter.getItem(position).getIdDistrito();
+                distritoUbigeo = distritoUbigeoAdapter.getItem(position).getUbigeo3();
+                distritoUbigeoDesc = distritoUbigeoAdapter.getItem(position).getDistrito();
             }
 
             @Override
@@ -155,7 +170,7 @@ public class IngresoInformacionComercio extends Activity {
             Comercio user;
             try {
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                user = dao.InsertarComercio(ruc, razSocial, direccion, repLegal, dni, departamento, provincia, distrito);
+                user = dao.InsertarComercio(ruc, razSocial, direccion, repLegal, dni, departamentoUbigeoDesc, provinciaUbigeoDesc, distritoUbigeoDesc);
             } catch (Exception e) {
                 user = null;
                 //fldag_clic_ingreso = 0;;
@@ -201,7 +216,7 @@ public class IngresoInformacionComercio extends Activity {
 
             try {
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                departamentoArrayList = dao.ListarDepartamentos();
+                ubigeoArrayListDepartamento = dao.ListarDepartamento();
             } catch (Exception e) {
                 //fldag_clic_ingreso = 0;;
             }
@@ -212,8 +227,8 @@ public class IngresoInformacionComercio extends Activity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             //usuarioEntityArrayList.remove(banco = banco_tarjeta);
-            departamentosAdapter.setNewListDepartamento(departamentoArrayList);
-            departamentosAdapter.notifyDataSetChanged();
+            departamentosUbigeoAdapter.setNewListDepartamentoUbigeo(ubigeoArrayListDepartamento);
+            departamentosUbigeoAdapter.notifyDataSetChanged();
         }
     }
 
@@ -234,7 +249,7 @@ public class IngresoInformacionComercio extends Activity {
 
             try {
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                distritoArrayList = dao.ListarDistrito();
+                ubigeoArrayListDistrito = dao.ListarDistritoUbigeo(departamentoUbigeo, provinciaUbigeo);
             } catch (Exception e) {
                 //fldag_clic_ingreso = 0;;
             }
@@ -245,8 +260,8 @@ public class IngresoInformacionComercio extends Activity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             //usuarioEntityArrayList.remove(banco = banco_tarjeta);
-            distritosAdapter.setNewListDistrito(distritoArrayList);
-            distritosAdapter.notifyDataSetChanged();
+            distritoUbigeoAdapter.setNewListDistritoUbigeo(ubigeoArrayListDistrito);
+            distritoUbigeoAdapter.notifyDataSetChanged();
         }
     }
 
@@ -267,7 +282,7 @@ public class IngresoInformacionComercio extends Activity {
 
             try {
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                provinciaArrayList = dao.ListarProvincias();
+                ubigeoArrayListProvincia = dao.ListarProvinciaUbigeo(departamentoUbigeo);
             } catch (Exception e) {
                 //fldag_clic_ingreso = 0;;
             }
@@ -278,8 +293,8 @@ public class IngresoInformacionComercio extends Activity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             //usuarioEntityArrayList.remove(banco = banco_tarjeta);
-            provinciasAdapter.setNewListProvincia(provinciaArrayList);
-            provinciasAdapter.notifyDataSetChanged();
+            provinciaUbigeoAdapter.setNewListProvinciaUbigeo(ubigeoArrayListProvincia);
+            provinciaUbigeoAdapter.notifyDataSetChanged();
         }
     }
 }
