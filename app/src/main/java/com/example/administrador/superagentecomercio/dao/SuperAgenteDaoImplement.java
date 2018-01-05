@@ -28,6 +28,108 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
+    public ArrayList<Ubigeo> ListarProvinciaUbigeo(String ubigeo1) {
+        ArrayList<Ubigeo> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListarProvincia/?ubigeo1=" + ubigeo1;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Ubigeo usuarioEntity = new Ubigeo();
+                        usuarioEntity.setUbigeo1(utils.getValueStringOrNull(jsonObject, "ubigeo1"));
+                        usuarioEntity.setUbigeo2(utils.getValueStringOrNull(jsonObject, "ubigeo2"));
+                        usuarioEntity.setUbigeo3(utils.getValueStringOrNull(jsonObject, "ubigeo3"));
+                        usuarioEntity.setDepartamento(utils.getValueStringOrNull(jsonObject, "departamento"));
+                        usuarioEntity.setDistrito(utils.getValueStringOrNull(jsonObject, "distrito"));
+                        usuarioEntity.setProvincia(utils.getValueStringOrNull(jsonObject, "provincia"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
+    public ArrayList<Ubigeo> ListarDistritoUbigeo(String ubigeo1, String ubigeo2) {
+        ArrayList<Ubigeo> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListarDistrito/?ubigeo1=" + ubigeo1 + "&ubigeo2=" + ubigeo2;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Ubigeo usuarioEntity = new Ubigeo();
+                        usuarioEntity.setUbigeo1(utils.getValueStringOrNull(jsonObject, "ubigeo1"));
+                        usuarioEntity.setUbigeo2(utils.getValueStringOrNull(jsonObject, "ubigeo2"));
+                        usuarioEntity.setUbigeo3(utils.getValueStringOrNull(jsonObject, "ubigeo3"));
+                        usuarioEntity.setDepartamento(utils.getValueStringOrNull(jsonObject, "departamento"));
+                        usuarioEntity.setDistrito(utils.getValueStringOrNull(jsonObject, "distrito"));
+                        usuarioEntity.setProvincia(utils.getValueStringOrNull(jsonObject, "provincia"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
+    public ArrayList<Ubigeo> ListarDepartamento() {
+        ArrayList<Ubigeo> listaUsuario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListarDepartamento/?vac03=";
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Ubigeo usuarioEntity = new Ubigeo();
+                        usuarioEntity.setUbigeo1(utils.getValueStringOrNull(jsonObject, "ubigeo1"));
+                        usuarioEntity.setUbigeo2(utils.getValueStringOrNull(jsonObject, "ubigeo2"));
+                        usuarioEntity.setUbigeo3(utils.getValueStringOrNull(jsonObject, "ubigeo3"));
+                        usuarioEntity.setDepartamento(utils.getValueStringOrNull(jsonObject, "departamento"));
+                        usuarioEntity.setDistrito(utils.getValueStringOrNull(jsonObject, "distrito"));
+                        usuarioEntity.setProvincia(utils.getValueStringOrNull(jsonObject, "provincia"));
+                        listaUsuario.add(usuarioEntity);
+                    }
+                } else {
+                    listaUsuario = null;
+                }
+            } else {
+                listaUsuario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuario;
+    }
+
+    @Override
     public ArrayList<VoucherPagoConsumo> reporteMovimientos(String idComercio) {
         ArrayList<VoucherPagoConsumo> listaUsuario = new ArrayList<>();
 
@@ -526,7 +628,7 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
-    public Comercio InsertarComercio(String rucComercio, String razSocialComercio, String direccionComercio, String representanteComercio, String dniRepresentante, int departamento, int provincia, int distrito) {
+    public Comercio InsertarComercio(String rucComercio, String razSocialComercio, String direccionComercio, String representanteComercio, String dniRepresentante, String departamento, String provincia, String distrito) {
         Comercio comercio;
 
         try {
@@ -553,9 +655,9 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
                     comercio.setDireccion(direccionComercio);
                     comercio.setRepresentanteLegal(representanteComercio);
                     comercio.setDniRepresentante(dniRepresentante);
-                    comercio.setDepartamentoComercio(departamento);
-                    comercio.setProvinciaComercio(provincia);
-                    comercio.setDistritoComercio(distrito);
+                    comercio.setDepartamento(departamento);
+                    comercio.setProvincia(provincia);
+                    comercio.setDistrito(distrito);
                     comercio.setIdComercio(utils.getValueStringOrNull(jsonObject, "codComercio"));
                 } else {
                     comercio = null;
