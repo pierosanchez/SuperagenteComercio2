@@ -128,6 +128,55 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
     }
 
     @Override
+    public ArrayList<Operario> ListadoOperario(String idComercio) {
+        ArrayList<Operario> listaOperario = new ArrayList<>();
+
+        String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/ListarOperarios/?id_COM=" + idComercio;
+
+        try {
+            JSONArray jsonArray = utils.getJSONArrayfromURL(url);
+            if (jsonArray != null) {
+                if (jsonArray.length() > 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Operario operarioEntity = new Operario();
+                        operarioEntity.setId_ope(utils.getValueStringOrNull(jsonObject, "id_ope"));
+                        operarioEntity.setDni_ope(utils.getValueStringOrNull(jsonObject, "dni_ope"));
+                        operarioEntity.setNom_ope(utils.getValueStringOrNull(jsonObject, "nom_ope"));
+                        operarioEntity.setPater_ope(utils.getValueStringOrNull(jsonObject, "pater_ope"));
+                        operarioEntity.setMater_ope(utils.getValueStringOrNull(jsonObject, "mater_ope"));
+                        operarioEntity.setCelular(utils.getValueStringOrNull(jsonObject, "celular"));
+                        operarioEntity.setFono_fijo(utils.getValueStringOrNull(jsonObject, "fono_fijo"));
+                        operarioEntity.setSexo(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "sexo")));
+                        operarioEntity.setSexoj(utils.getValueStringOrNull(jsonObject, "sexoj"));
+                        operarioEntity.setComercio(utils.getValueStringOrNull(jsonObject, "comercio"));
+                        operarioEntity.setComercioj(utils.getValueStringOrNull(jsonObject, "comercioj"));
+                        operarioEntity.setPais(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "pais")));
+                        operarioEntity.setPaisj(utils.getValueStringOrNull(jsonObject, "paisj"));
+                        operarioEntity.setDepartamento(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "departamento")));
+                        operarioEntity.setDepartamentoj(utils.getValueStringOrNull(jsonObject, "departamentoj"));
+                        operarioEntity.setDistrito(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "distrito")));
+                        operarioEntity.setDistritoj(utils.getValueStringOrNull(jsonObject, "distritoj"));
+                        operarioEntity.setProvincia(Integer.parseInt(utils.getValueStringOrNull(jsonObject, "provincia")));
+                        operarioEntity.setProvinciaj(utils.getValueStringOrNull(jsonObject, "provinciaj"));
+                        operarioEntity.setDireccion(utils.getValueStringOrNull(jsonObject, "direccion"));
+                        listaOperario.add(operarioEntity);
+                    }
+                } else {
+                    listaOperario = null;
+                }
+            } else {
+                listaOperario = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaOperario;
+    }
+
+    //ACTUALIZAR-------------------------------------------
+    @Override
     public PasswordComercio actualizarClaveAcceso(String clave_comercio, String id_Comercio, String clave_nueva_comercio, String respuesta_pregunta_comercio) {
         PasswordComercio user;
         try {

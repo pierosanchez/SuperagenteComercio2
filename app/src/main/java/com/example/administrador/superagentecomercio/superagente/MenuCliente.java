@@ -53,6 +53,7 @@ public class MenuCliente extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuCliente.this, ListarOperario.class);
+                intent.putExtra("comercio", comercio);
                 startActivity(intent);
                 finish();
             }

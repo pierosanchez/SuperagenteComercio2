@@ -44,7 +44,7 @@
                 android:gravity="center">
 
                 <ListView
-                    android:id="@+id/lv_tarjetas_cargo_usuario"
+                    android:id="@+id/lv_listado_operario"
                     android:layout_width="330dp"
                     android:layout_height="400dp">
 
@@ -93,9 +93,9 @@
             app:fab_icon="@drawable/ic_person_add"
             app:fab_addButtonColorNormal="#4dbdd9"
             app:fab_addButtonColorPressed="#ffffff"
-            app:fab_size="mini"
-            app:fab_title="Agregar"
-            />
+            app:fab_size="mini"/>
+            <!--app:fab_title="Agregar"-->
+
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -104,9 +104,9 @@
             app:fab_icon="@drawable/ic_home"
             app:fab_addButtonColorNormal="#ffffff"
             app:fab_addButtonColorPressed="#4dbdd9"
-            app:fab_size="mini"
-            app:fab_title="Menú"
-            />
+            app:fab_size="mini"/>
+            <!--app:fab_title="Menú"-->
+
 
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

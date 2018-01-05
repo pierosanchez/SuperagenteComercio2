@@ -83,6 +83,7 @@ public class AfiliacionComercio extends Activity {
                     if (clave.equals(confirm_clave)) {
                         if (respuesta.equals(confirm_respuesta)) {
 
+                            //EJECUTANDO EL METODO QUE INVOCA EL WEB SERVICE
                             AfiliacionComercio.ValidarUComercio validarUComercio = new AfiliacionComercio.ValidarUComercio();
                             validarUComercio.execute();
 
