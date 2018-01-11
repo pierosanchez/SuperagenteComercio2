@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.administrador.superagentecomercio.R;
 import com.example.administrador.superagentecomercio.entity.Ubigeo;
+import com.example.administrador.superagentecomercio.entity.UbigeoEntity;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,11 @@ import java.util.ArrayList;
 
 public class DistritoUbigeoAdapter extends BaseAdapter {
 
-    ArrayList<Ubigeo> items;
+    ArrayList<UbigeoEntity> items;
     Context context;
     LayoutInflater layoutInflater = null;
 
-    public DistritoUbigeoAdapter(ArrayList<Ubigeo> items, Context context) {
+    public DistritoUbigeoAdapter(ArrayList<UbigeoEntity> items, Context context) {
         this.items = items;
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -38,7 +39,7 @@ public class DistritoUbigeoAdapter extends BaseAdapter {
     }
 
     @Override
-    public Ubigeo getItem(int position) {
+    public UbigeoEntity getItem(int position) {
         if(items == null){
             return null;
         }else{
@@ -60,7 +61,7 @@ public class DistritoUbigeoAdapter extends BaseAdapter {
 
         viewHolder.tv_distritos.setText(String.valueOf(getItem(position).getDistrito()));
 
-        Ubigeo data = getItem(position);
+        UbigeoEntity data = getItem(position);
 
         if(data!=null){
             viewHolder.tv_distritos.setText(data.getDistrito());
@@ -75,7 +76,7 @@ public class DistritoUbigeoAdapter extends BaseAdapter {
         TextView tv_distritos;
     }
 
-    public void setNewListDistritoUbigeo(ArrayList<Ubigeo> listBeneficiario){
+    public void setNewListDistritoUbigeo(ArrayList<UbigeoEntity> listBeneficiario){
         items = listBeneficiario;
     }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.administrador.superagentecomercio.R;
 import com.example.administrador.superagentecomercio.entity.Departamento;
 import com.example.administrador.superagentecomercio.entity.Ubigeo;
+import com.example.administrador.superagentecomercio.entity.UbigeoEntity;
 
 import java.util.ArrayList;
 
@@ -19,11 +20,11 @@ import java.util.ArrayList;
 
 public class DepartamentosUbigeoAdapter extends BaseAdapter {
 
-    ArrayList<Ubigeo> items;
+    ArrayList<UbigeoEntity> items;
     Context context;
     LayoutInflater layoutInflater = null;
 
-    public DepartamentosUbigeoAdapter(ArrayList<Ubigeo> items, Context context) {
+    public DepartamentosUbigeoAdapter(ArrayList<UbigeoEntity> items, Context context) {
         this.items = items;
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -39,7 +40,7 @@ public class DepartamentosUbigeoAdapter extends BaseAdapter {
     }
 
     @Override
-    public Ubigeo getItem(int position) {
+    public UbigeoEntity getItem(int position) {
         if(items == null){
             return null;
         }else{
@@ -61,7 +62,7 @@ public class DepartamentosUbigeoAdapter extends BaseAdapter {
 
         viewHolder.tv_departamentos.setText(String.valueOf(getItem(position).getDepartamento()));
 
-        Ubigeo data = getItem(position);
+        UbigeoEntity data = getItem(position);
 
         if(data!=null){
             viewHolder.tv_departamentos.setText(data.getDepartamento());
@@ -76,7 +77,7 @@ public class DepartamentosUbigeoAdapter extends BaseAdapter {
         TextView tv_departamentos;
     }
 
-    public void setNewListDepartamentoUbigeo(ArrayList<Ubigeo> listBeneficiario){
+    public void setNewListDepartamentoUbigeo(ArrayList<UbigeoEntity> listBeneficiario){
         items = listBeneficiario;
     }
 

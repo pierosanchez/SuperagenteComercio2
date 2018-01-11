@@ -2,8 +2,6 @@ package com.example.administrador.superagentecomercio.superagente;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -11,58 +9,59 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.administrador.superagentecomercio.R;
-import com.example.administrador.superagentecomercio.adapter.DepartamentosAdapter;
 import com.example.administrador.superagentecomercio.adapter.DepartamentosUbigeoAdapter;
-import com.example.administrador.superagentecomercio.adapter.DistritoAdapter;
 import com.example.administrador.superagentecomercio.adapter.DistritoUbigeoAdapter;
-import com.example.administrador.superagentecomercio.adapter.ProvinciaAdapter;
 import com.example.administrador.superagentecomercio.adapter.ProvinciaUbigeoAdapter;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoImplement;
 import com.example.administrador.superagentecomercio.dao.SuperAgenteDaoInterface;
 import com.example.administrador.superagentecomercio.entity.Comercio;
-import com.example.administrador.superagentecomercio.entity.Departamento;
-import com.example.administrador.superagentecomercio.entity.Distrito;
-import com.example.administrador.superagentecomercio.entity.Provincia;
-import com.example.administrador.superagentecomercio.entity.Ubigeo;
+import com.example.administrador.superagentecomercio.entity.Operario;
 import com.example.administrador.superagentecomercio.entity.UbigeoEntity;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class IngresoInformacionComercio extends Activity {
+public class AgregarOperario2 extends Activity {
 
-    Button btn_continuar;
-    EditText txt_ruc, txt_raz_social, txt_direccion, txt_rep_legal, txt_dni;
     Spinner sp_departamento, sp_provincia, sp_distrito;
+
+    EditText et_direccion;
+
+    FloatingActionButton btn_guardar,btn_menu,btn_regresar;
+
+    Button btn_guardarOperario;
+
     ArrayList<UbigeoEntity> ubigeoArrayListDepartamento;
     ArrayList<UbigeoEntity> ubigeoArrayListDistrito;
     ArrayList<UbigeoEntity> ubigeoArrayListProvincia;
     DepartamentosUbigeoAdapter departamentosUbigeoAdapter;
     DistritoUbigeoAdapter distritoUbigeoAdapter;
     ProvinciaUbigeoAdapter provinciaUbigeoAdapter;
-    String departamentoUbigeo, departamentoUbigeoDesc, distritoUbigeo, distritoUbigeoDesc, provinciaUbigeo, provinciaUbigeoDesc;
-    int distrito, provincia, departamento;
-    private Comercio comercio;
+
+    private Comercio idcomercio;
+
+    String dni,nombre,paterno,materno,celular,fono,sexo;
+
+    String departamentoUbigeo, departamentoUbigeoDesc, distritoUbigeo,
+            distritoUbigeoDesc, provinciaUbigeo, provinciaUbigeoDesc;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ingreso_informacion_comercio);
+        setContentView(R.layout.agregar_operario2);
 
-        btn_continuar = (Button) findViewById(R.id.btn_continuar);
+        btn_regresar = (FloatingActionButton) findViewById(R.id.action_return);
+        btn_guardarOperario = (Button) findViewById(R.id.btn_guardarOperario);
 
-        txt_ruc = (EditText) findViewById(R.id.txt_ruc);
-        txt_raz_social = (EditText) findViewById(R.id.txt_raz_social);
-        txt_direccion = (EditText) findViewById(R.id.txt_direccion);
-        txt_rep_legal = (EditText) findViewById(R.id.txt_rep_legal);
-        txt_dni = (EditText) findViewById(R.id.txt_dni);
+        et_direccion = (EditText) findViewById(R.id.et_direccion);
 
         sp_departamento = (Spinner) findViewById(R.id.sp_departamento);
         sp_provincia = (Spinner) findViewById(R.id.sp_provincia);
         sp_distrito = (Spinner) findViewById(R.id.sp_distrito);
+
 
         ubigeoArrayListDepartamento = null;
         departamentosUbigeoAdapter = new DepartamentosUbigeoAdapter(ubigeoArrayListDepartamento, getApplication());
@@ -70,39 +69,18 @@ public class IngresoInformacionComercio extends Activity {
 
         ejecutarListaDepartamentos();
 
-        sp_provincia.setEnabled(false);
-        sp_distrito.setEnabled(false);
 
-        btn_continuar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String ruc = txt_ruc.getText().toString();
-                String razSocial = txt_raz_social.getText().toString();
-                String direccion = txt_direccion.getText().toString();
-                String repLegal = txt_rep_legal.getText().toString();
-                String dni = txt_dni.getText().toString();
-                if (ruc.length() == 0 && razSocial.length() == 0 && direccion.length() == 0 && repLegal.length() == 0 && dni.length() == 0) {
-                    Toast.makeText(IngresoInformacionComercio.this, "Ingrese los datos del comercio", Toast.LENGTH_LONG).show();
-                } else if (ruc.length() == 0){
-                    Toast.makeText(IngresoInformacionComercio.this, "Ingrese el número de ruc", Toast.LENGTH_LONG).show();
-                } else if (razSocial.length() == 0){
-                    Toast.makeText(IngresoInformacionComercio.this, "Ingrese la razón social", Toast.LENGTH_LONG).show();
-                } else if (direccion.length() == 0){
-                    Toast.makeText(IngresoInformacionComercio.this, "Ingrese la dirección", Toast.LENGTH_LONG).show();
-                } else if (repLegal.length() == 0){
-                    Toast.makeText(IngresoInformacionComercio.this, "Ingrese el representante legal", Toast.LENGTH_LONG).show();
-                } else if (dni.length() == 0){
-                    Toast.makeText(IngresoInformacionComercio.this, "Ingrese el número de DNI", Toast.LENGTH_LONG).show();
-                } else {
-                    IngresoInformacionComercio.ValidarUComercio validarComercio = new IngresoInformacionComercio.ValidarUComercio();
-                    validarComercio.execute();
+        Bundle bundle = getIntent().getExtras();
+        idcomercio = bundle.getParcelable("idcomercio");
+        dni = bundle.getString("dni");
+        nombre = bundle.getString("nombre");
+        paterno = bundle.getString("paterno");
+        materno = bundle.getString("materno");
+        celular = bundle.getString("celular");
+        fono = bundle.getString("fono");
+        sexo = bundle.getString("sexo");
 
-                    /*Intent intent = new Intent(IngresoInformacionComercio.this, AfiliacionComercio.class);
-                    startActivity(intent);
-                    finish();*/
-                }
-            }
-        });
+
         sp_departamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -116,6 +94,8 @@ public class IngresoInformacionComercio extends Activity {
                 ejecutarListaProvincias();
 
                 sp_provincia.setEnabled(true);
+
+
             }
 
             @Override
@@ -157,21 +137,46 @@ public class IngresoInformacionComercio extends Activity {
 
             }
         });
+
+        btn_regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AgregarOperario2.this, ListarOperario.class);
+                intent.putExtra("comercio", idcomercio);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        btn_guardarOperario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AgregarOperario2.insertarOperario insertar = new AgregarOperario2.insertarOperario();
+                insertar.execute();
+
+
+            }
+        });
+
     }
 
-    private class ValidarUComercio extends AsyncTask<String, Void, Comercio> {
-        String ruc = txt_ruc.getText().toString();
-        String razSocial = txt_raz_social.getText().toString();
-        String direccion = txt_direccion.getText().toString();
-        String repLegal = txt_rep_legal.getText().toString();
-        String dni = txt_dni.getText().toString();
+
+    //Métodos:
+
+    private class insertarOperario extends AsyncTask<String, Void, Operario> {
+
+        String direccion = et_direccion.getText().toString();
 
         @Override
-        protected Comercio doInBackground(String... params) {
-            Comercio user;
+        protected Operario doInBackground(String... params) {
+            Operario user = null;
             try {
+
                 SuperAgenteDaoInterface dao = new SuperAgenteDaoImplement();
-                user = dao.InsertarComercio(ruc, razSocial, direccion, repLegal, dni, departamentoUbigeoDesc, provinciaUbigeoDesc, distritoUbigeoDesc);
+                user = dao.InsertarOperario( dni, nombre,  paterno,  materno, celular, fono,  sexo, idcomercio.getIdComercio(), departamentoUbigeoDesc, distritoUbigeoDesc, provinciaUbigeoDesc, direccion, "934103162");
+
             } catch (Exception e) {
                 user = null;
                 //fldag_clic_ingreso = 0;;
@@ -179,31 +184,13 @@ public class IngresoInformacionComercio extends Activity {
             return user;
         }
 
-        @Override
-        protected void onPostExecute(Comercio com) {
-            comercio = com;
-
-            if (comercio != null) {//usuario.getUsuario() != null) {
-                if (comercio.getIdComercio() != null) {
-
-                    Intent intent = new Intent(IngresoInformacionComercio.this, AfiliacionComercio.class);
-                    intent.putExtra("comercio", comercio);
-                    startActivity(intent);
-                    finish();
-
-                } else {
-                    Toast.makeText(IngresoInformacionComercio.this, "Hubo un error al ingresar los datos", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(IngresoInformacionComercio.this, "Hubo un error al ingresar los datos", Toast.LENGTH_LONG).show();
-            }
-        }
     }
+
 
     private void ejecutarListaDepartamentos() {
 
         try {
-            IngresoInformacionComercio.ListadoDepartamentos listadoEmpresas = new IngresoInformacionComercio.ListadoDepartamentos();
+            AgregarOperario2.ListadoDepartamentos listadoEmpresas = new AgregarOperario2.ListadoDepartamentos();
             listadoEmpresas.execute();
         } catch (Exception e) {
             //listadoBeneficiario = null;
@@ -236,7 +223,7 @@ public class IngresoInformacionComercio extends Activity {
     private void ejecutarListaDistritos() {
 
         try {
-            IngresoInformacionComercio.ListadoDistritos listadoEmpresas = new IngresoInformacionComercio.ListadoDistritos();
+            AgregarOperario2.ListadoDistritos listadoEmpresas = new AgregarOperario2.ListadoDistritos();
             listadoEmpresas.execute();
         } catch (Exception e) {
             //listadoBeneficiario = null;
@@ -269,7 +256,7 @@ public class IngresoInformacionComercio extends Activity {
     private void ejecutarListaProvincias() {
 
         try {
-            IngresoInformacionComercio.ListadoProvincias listadoEmpresas = new IngresoInformacionComercio.ListadoProvincias();
+            AgregarOperario2.ListadoProvincias listadoEmpresas = new AgregarOperario2.ListadoProvincias();
             listadoEmpresas.execute();
         } catch (Exception e) {
             //listadoBeneficiario = null;
@@ -298,4 +285,5 @@ public class IngresoInformacionComercio extends Activity {
             provinciaUbigeoAdapter.notifyDataSetChanged();
         }
     }
+
 }

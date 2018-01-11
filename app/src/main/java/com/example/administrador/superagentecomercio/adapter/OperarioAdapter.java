@@ -68,10 +68,12 @@ public class OperarioAdapter extends BaseAdapter {
             viewHolder.row_nombre.setText(data.getNom_ope());
             viewHolder.row_paterno.setText(data.getPater_ope());
             viewHolder.row_materno.setText(data.getMater_ope());
+            viewHolder.row_dni.setText(data.getDni_ope());
         } else {
             viewHolder.row_nombre.setText("");
             viewHolder.row_paterno.setText("");
             viewHolder.row_materno.setText("");
+            viewHolder.row_dni.setText("");
         }
 
         return view;

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.administrador.superagentecomercio.R;
 import com.example.administrador.superagentecomercio.adapter.OperarioAdapter;
@@ -30,9 +31,9 @@ public class ListarOperario extends Activity {
     OperarioAdapter operarioAdapter;
     ArrayList<Operario> arrayoperario;
 
-    private String id_ope,dni_ope,nom_ope,pater_ope,mater_ope,celular,fono_fijo,sexoj,comercio,
-            comercioj,paisj,departamentoj,distritoj,provinciaj,direccion;
-    private int sexo,pais,departamento,distrito,provincia;
+    private String id_ope,dni_ope,nom_ope,pater_ope,mater_ope,celular,fono_fijo,comercio,
+            comercioj,direccion;
+    private String sexo,departamento,distrito,provincia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,20 +56,55 @@ public class ListarOperario extends Activity {
 
         ejecutarLista();
 
-        /*lv_listado_operario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv_listado_operario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                id_ope = OperarioAdapter.getItem(position).getNumeroTarjeta();
-                id_ope = OperarioAdapter.getItem(position)
+                id_ope = operarioAdapter.getItem(position).getId_ope();
+                dni_ope = operarioAdapter.getItem(position).getDni_ope();
+                nom_ope = operarioAdapter.getItem(position).getNom_ope();
+                pater_ope = operarioAdapter.getItem(position).getPater_ope();
+                mater_ope = operarioAdapter.getItem(position).getMater_ope();
+                celular = operarioAdapter.getItem(position).getCelular();
+                fono_fijo = operarioAdapter.getItem(position).getFono_fijo();
+                comercio = operarioAdapter.getItem(position).getComercio();
+                comercioj = operarioAdapter.getItem(position).getComercioj();
+                direccion = operarioAdapter.getItem(position).getDireccion();
+                sexo = operarioAdapter.getItem(position).getSexo();
+                departamento = operarioAdapter.getItem(position).getDepartamento();
+                distrito = operarioAdapter.getItem(position).getDistrito();
+                provincia = operarioAdapter.getItem(position).getProvincia();
+
+
+                    Intent intent = new Intent(ListarOperario.this, DetalleOperario.class);
+                    intent.putExtra("id_ope", id_ope);
+                    intent.putExtra("dni_ope", dni_ope);
+                    intent.putExtra("nom_ope", nom_ope);
+                    intent.putExtra("pater_ope", pater_ope);
+                    intent.putExtra("mater_ope", mater_ope);
+                    intent.putExtra("fono_fijo", fono_fijo);
+                    intent.putExtra("celular", celular);
+                    intent.putExtra("comercio", comercio);
+                    intent.putExtra("comercioj", comercioj);
+                    intent.putExtra("sexo", sexo);
+                    intent.putExtra("departamento", departamento);
+                    intent.putExtra("distrito", distrito);
+                    intent.putExtra("provincia", provincia);
+                    intent.putExtra("direccion", direccion);
+                    intent.putExtra("idcomercio", idcomercio);
+
+                    startActivity(intent);
+                    finish();
+
+
             }
-        });*/
+        });
 
         btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListarOperario.this, DetalleOperario.class);
+                /*Intent intent = new Intent(ListarOperario.this, DetalleOperario.class);
                 startActivity(intent);
-                finish();
+                finish();*/
             }
         });
 
@@ -76,6 +112,7 @@ public class ListarOperario extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListarOperario.this, AgregarOperario.class);
+                intent.putExtra("idcomercio", idcomercio);
                 startActivity(intent);
                 finish();
             }

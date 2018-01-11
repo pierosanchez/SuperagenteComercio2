@@ -42,7 +42,9 @@
         <activity android:name=".superagente.DetalleOperario" />
         <activity android:name=".superagente.ReporteMovimientos" />
         <activity android:name=".superagente.LoginIngresoUsuario" />
-        <activity android:name=".superagente.VoucherConsumos"></activity>
+        <activity android:name=".superagente.VoucherConsumos" />
+        <activity android:name=".superagente.AgregarOperario2" />
+        <activity android:name=".superagente.EditarOperario2"></activity>
     </application>
 
 </manifest>
