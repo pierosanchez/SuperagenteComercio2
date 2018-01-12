@@ -202,7 +202,7 @@
             </LinearLayout>
 
             <Button
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="35dp"
                 android:id="@+id/btn_siguiente"
                 android:textColor="#fff"
                 android:background="@drawable/buttonstyleithgradient"
@@ -433,51 +433,49 @@
         </LinearLayout>
     </ScrollView>
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/multiple_actions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/multiple_actions"
-        android:layout_margin="16dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
         app:fab_addButtonColorNormal="#f9f6f6"
         app:fab_addButtonColorPressed="#dadfe1"
         app:fab_addButtonPlusIconColor="#4dbdd9"
-        app:fab_labelStyle="@style/menu_labels_style"
-        >
+        app:fab_labelStyle="@style/menu_labels_style">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
+        <!--<com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_guardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/action_guardar"
-            app:fab_icon="@drawable/ic_save"
             app:fab_addButtonColorNormal="#4dbdd9"
             app:fab_addButtonColorPressed="#ffffff"
-            app:fab_size="mini"
-            app:fab_title="Guardar"
-            />
+            app:fab_icon="@drawable/ic_save"
+            app:fab_size="mini" />-->
+        <!--app:fab_title="Guardar"-->
+
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/action_return"
-            app:fab_icon="@drawable/ic_replay"
-            app:fab_addButtonColorNormal="#ffffff"
-            app:fab_addButtonColorPressed="#4dbdd9"
-            app:fab_size="mini"
-            app:fab_title="Regresar"
-            />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/action_menu"
-            app:fab_icon="@drawable/ic_home"
             app:fab_addButtonColorNormal="#ffffff"
             app:fab_addButtonColorPressed="#4dbdd9"
-            app:fab_size="mini"
-            app:fab_title="Regresar"
-            />
+            app:fab_icon="@drawable/ic_replay"
+            app:fab_size="mini" />
+        <!--app:fab_title="Regresar"-->
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_addButtonColorNormal="#ffffff"
+            app:fab_addButtonColorPressed="#4dbdd9"
+            app:fab_icon="@drawable/ic_home"
+            app:fab_size="mini" />
+        <!--app:fab_title="Regresar"-->
 
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
