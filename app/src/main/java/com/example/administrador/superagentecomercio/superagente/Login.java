@@ -165,10 +165,12 @@ public class Login extends Activity {
                     finish();
                 } else {
                     try {
+                        String user = usuario.getText().toString();
                         circleProgressBar.setVisibility(View.GONE);
                         Intent sanipesIntent = new Intent(Login.this, MenuCliente.class);
                         sanipesIntent.putExtra("comercio", comercio);
-                        /*sanipesIntent.putExtra("cliente", comercio.getNombreApellido());
+                        sanipesIntent.putExtra("user", user);
+                        /*anipesIntent.putExtra("cliente", comercio.getNombreApellido());
                         sanipesIntent.putExtra("cli_dni", comercio.getDni());*/
                         startActivity(sanipesIntent);
                         finish();

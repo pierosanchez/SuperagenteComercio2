@@ -13,6 +13,7 @@ public class MenuCliente extends Activity {
 
     Button btn_salir, btn_cambio_clave, btn_mantenimiento, btn_anulacion, btn_reporte_movimientos;
     private Comercio comercio;
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class MenuCliente extends Activity {
 
         Bundle extra = getIntent().getExtras();
         comercio = extra.getParcelable("comercio");
+        user = extra.getString("user");
 
 
         btn_cambio_clave.setOnClickListener(new View.OnClickListener(){
@@ -54,6 +56,7 @@ public class MenuCliente extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MenuCliente.this, ListarOperario.class);
                 intent.putExtra("comercio", comercio);
+                intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
             }

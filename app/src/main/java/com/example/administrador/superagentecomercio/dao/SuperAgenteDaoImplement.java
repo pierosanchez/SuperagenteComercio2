@@ -781,6 +781,35 @@ public class SuperAgenteDaoImplement implements SuperAgenteDaoInterface {
         return operario;
     }
 
+    @Override
+    public Operario EliminarOperario(String id_ope) {
+        Operario operario;
+        try {
+            operario = new Operario();
+
+            String url = Constante.IPORHOST + "webApi_2/apigeneral/ApiGeneral/EliminarOperario/?pk_OPE=" + URLEncoder.encode(id_ope, "UTF-8");
+
+            JSONArray arrayJason = utils.getJSONArrayfromURL(url);
+            Log.e("Json", arrayJason.toString());
+            if (arrayJason != null) {
+                if (arrayJason.length() > 0) {
+                    operario.setId_ope(id_ope);
+
+                } else {
+                    operario = null;
+                }
+            } else {
+                operario = null;
+            }
+
+        } catch (Exception e) {
+            Log.getStackTraceString(e);
+            operario = null;
+        }
+
+        return operario;
+    }
+
 
 
     @Override
